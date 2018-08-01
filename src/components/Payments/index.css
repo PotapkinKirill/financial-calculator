@@ -1,8 +1,19 @@
 .payments{
   text-align: center;
 }
+
 .payments__category{
   border-radius: 4px;
+}
+
+.payments__category::-webkit-calendar-picker-indicator,
+.payments__price::-webkit-inner-spin-button,
+.payments__price::-webkit-outer-spin-button{
+  opacity: 1;
+}
+
+.payments__category::-webkit-calendar-picker-indicator:hover{
+  background-color: #a3cff1;
 }
 
 .payments__category,
@@ -20,16 +31,16 @@
 }
 
 
-.payments__category:focus,
+.payments__category:hover,
+.payments__price:hover{
+  border-color: #a3cff1;
+}
+
 .payments__price:focus,
+.payments__category:focus,
 .payments__save {
   border-color: #66afe9;
   outline: 0;
-}
-
-.payments__category:focus,
-.payments__price:focus{
-  text-align: left;
 }
 
 .payments__save{
@@ -54,7 +65,6 @@
   margin-top: 50px;
   width: 410px;
   text-align: left;
-  
 }
 
 .payments__views input{

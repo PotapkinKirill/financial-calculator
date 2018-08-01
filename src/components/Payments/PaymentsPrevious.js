@@ -13,7 +13,7 @@ class PaymentsPrevious extends Component {
             <tr key={index}>
               <td className="payments__views-input-radio"><input type="radio" defaultChecked /></td>
               <td className="payments__views-category">{payment.category}:</td>
-              <td className="payments__views-price">${payment.price}</td>
+              <td className="payments__views-price">${payment.sum}</td>
             </tr>
           )}
           </tbody>
