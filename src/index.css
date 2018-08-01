@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 1000px;
+  margin: auto;
+  margin-top: 200px;
+}
+
+li {
+  list-style-type: none;
+}
