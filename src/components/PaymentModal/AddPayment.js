@@ -45,8 +45,6 @@ class AddPayment extends Component {
     } else {
       var payments = this.props.payments
     }
-
-    console.log(2)
     if (category && price) {
       if (payments.some(this.categoryExist)) {
         this.updatePayment(category, price);

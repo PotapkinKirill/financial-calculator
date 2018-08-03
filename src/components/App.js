@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Navbar'
 import {Payments} from './Payments'
 import {Income} from './Income'
+import {Charts} from './Charts'
 
 class App extends Component {
   state = {
@@ -20,8 +21,8 @@ class App extends Component {
         return <Payments />
       case 'Income':
         return <Income />
-      //case 'Charts':
-      //  return <Charts />
+      case 'Charts':
+        return <Charts />
       //case 'Settings':
       //  return <Settings />
       default:
