@@ -8,25 +8,30 @@ class Navbar extends Component {
       "Income",
       "Charts",
       "Settings"
-    ]
+    ],
+    defaultSelected: "Payments"
   }
-  
 
-  
+  handleClick = ({target}) => {
+    let tab = target.dataset.value
+    this.setState({
+      defaultSelected: tab
+    })
+    this.props.setRender(tab)
+  }
+
   render() {
     return(
       <ul className="Navbar">
       {this.state.tabs.map((tab, index) => 
-        <span key={index}>
-          <input
-            type="radio"
-            id={tab}
-            name="navigation"
-            value={tab}
+          <li 
+            data-value={tab}
+            key={index}
             onClick={this.handleClick}
-          />
-          <label htmlFor={tab}>{tab}</label>
-        </span>
+            className={tab === this.state.defaultSelected ? "active" : null}
+          >
+            {tab}
+          </li>
       )}
       </ul>
     );

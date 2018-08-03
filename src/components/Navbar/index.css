@@ -4,11 +4,8 @@
   margin-bottom: 50px;
 }
 
-.Navbar input[type="radio"] {
-  display: none;
-}
-
-.Navbar label {
+.Navbar li {
+  position: relative;
   width: 100px;
   display: inline-block;
   border-top: 2px solid #66afe9;
@@ -19,25 +16,40 @@
   cursor: pointer;
 }
 
-.Navbar span:hover{
-  background-color: #a3cff1;
-  color: white;
-}
-
-.Navbar span:nth-of-type(1) label{
-  border-left: 2px solid #66afe9;
-}
-
-.Navbar span:last-child label {
-  border-right: 2px solid #66afe9;
-}
-
-.Navbar span input[type="radio"]:checked+label {
+.Navbar li.active {
   background-color: #66afe9;
   color: white;
 }
 
+.Navbar li:hover{
+  background-color: #a3cff1;
+  color: white;
+}
 
-/*.Navbar input[type="radio"]:not(:checked)+label:last-child { 
+.Navbar li.active:hover {
+  background-color: #66afe9;
+}
+
+.Navbar li:nth-of-type(1){
+  border-left: 2px solid #66afe9;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.Navbar li:last-child {
   border-right: 2px solid #66afe9;
-}*/
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.Navbar li.active:after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #66afe9 transparent;
+  display: block;
+  width: 0;
+}
