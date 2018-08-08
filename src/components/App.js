@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar'
-import {Payments} from './Payments'
-import {Income} from './Income'
+import Payments from './Payments'
+import Income from './Income'
 import Charts from './Charts'
 
 class App extends Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PaymentsList = ({payments}) => {
+const PaymentsList = ({payments}) => {
   return(
     <datalist id="PaymentsList">
       {payments.map((payments, index) =>
@@ -9,3 +9,5 @@ export const PaymentsList = ({payments}) => {
     </datalist>
   )
 }
+
+export default (PaymentsList)

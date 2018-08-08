@@ -1,23 +1,26 @@
 import './index.css'
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import AddPayment from './AddPayment';
-import {PaymentsList} from './PaymentsList';
-import {PaymentsPrevious} from './PaymentsPrevious';
+import PaymentsList from './PaymentsList';
+import PaymentsPrevious from './PaymentsPrevious';
 
-class Payments extends Component {
+class PaymentsModal extends Component {
   state = {
     category: '',
     price: ''
   }
 
   handleCategoryChange = ({target}) => {
-    const value = target.value
+    let value = target.value
     this.setState({
       category: value
     });
+    this.writePriceIfExists(value)
+  }
+
+  writePriceIfExists = (value) => {
     this.props.payments.map((payment) => {
-      if (payment.category === value){
+      if (payment.category === value) {
         this.setState({
           price: payment.price
         });
@@ -27,7 +30,7 @@ class Payments extends Component {
   }
 
   handlePriceChange = ({target}) => {
-    const value = Number(target.value)
+    let value = Number(target.value)
     if (value > 0) {
       this.setState({
         price: value
@@ -48,15 +51,9 @@ class Payments extends Component {
 
   render(){
     let type = this.props.type;
-    let payments;
-    if (type === "Payment") {
-      payments = this.props.payments
-    }
-    else {
-      payments = this.props.incomes
-    }
+    let payments = this.props.payments
     return(
-      <div className={type}>
+      <div className="Payments">
         <input
           onChange={this.handleCategoryChange}
           className = 'Payments__input Payments__category'
@@ -73,15 +70,17 @@ class Payments extends Component {
           step='0.01'
           value={this.state.price}
         />
-        <AddPayment type={type} setClear={this.setClear} payments={payments} payment={this.state}/>
-        <PaymentsPrevious type={type} payments={payments}/>
+        <AddPayment
+          setClear={this.setClear} 
+          payments={payments} 
+          payment={this.state}
+          addPayment={this.props.addPayment}
+          updatePayment={this.props.updatePayment}
+        />
+        <PaymentsPrevious payments={payments}/>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return state
-}
-
-export default connect(mapStateToProps)(Payments)
+export default (PaymentsModal)

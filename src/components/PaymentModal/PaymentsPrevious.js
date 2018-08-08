@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PaymentsPrevious = ({payments}) => {
+const PaymentsPrevious = ({payments}) => {
   if (payments.length === 0) {
     return(null)
   }
@@ -23,3 +23,5 @@ export const PaymentsPrevious = ({payments}) => {
     )
   }
 }
+
+export default (PaymentsPrevious)
