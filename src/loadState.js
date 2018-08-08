@@ -1,10 +1,19 @@
 export const loadState = () => {
   try{
-    const serializedState = localStorage.getItem('state');
+    let serializedState = localStorage.getItem('state');
     if (serializedState == null) {
       return undefined;
     }
-    return JSON.parse(serializedState);
+    serializedState = JSON.parse(serializedState)
+    serializedState.payments.push(
+      {
+        date: new Date(2018, 10),
+        category: 'test',
+        price: 1,
+        sum: 100
+      }
+    )
+    return serializedState;
   } catch (err) {
     return undefined;
   }

@@ -23,7 +23,7 @@ export const Circle = ({payments}) => {
             return {
               color: color[index],
               value: payment.sum,
-              title: payment.category
+              title: payment.category + ', ' + payment.sum
             }
           })
         }

@@ -4,15 +4,6 @@ import YearMonthSelector from 'react-year-month-selector';
 export class Range extends Component {
   state = {
     isOpen: false,
-    year: (new Date()).getFullYear(),
-    month: (new Date()).getMonth()
-  }
-  
-  handleChoose = (year,month) => {
-    this.setState({
-      year: year,
-      month: month
-    })
   }
 
   handleClose = () => {
@@ -32,11 +23,11 @@ export class Range extends Component {
       <div className="payments-report">
         <p>Report month:</p>
         <div className="payments-calendar">
-          <input onClick={this.handleOpen} readOnly value={this.state.month + 1 + '/' + this.state.year} />
+          <input onClick={this.handleOpen} readOnly value={this.props.month + 1 + '/' + this.props.year} />
           <YearMonthSelector
-            year={this.state.year}
-            month={this.state.month}
-            onChange={this.handleChoose}
+            year={this.props.year}
+            month={this.props.month}
+            onChange={this.props.handleChoose}
             open={this.state.isOpen}
             onClose={this.handleClose}
           />
