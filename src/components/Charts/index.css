@@ -1,6 +1,37 @@
-circle {
-  fill: yellowgreen;
-  stroke: #655;
-  stroke-width: 30;
-  stroke-dasharray: 0 189;
-}
+.Charts {
+  width: 600px;
+  margin: auto;
+  font-size: 20px; }
+  .Charts .payments-report {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    margin-bottom: 40px; }
+    .Charts .payments-report input {
+      text-align: center;
+      width: 60px;
+      height: 20px; }
+    .Charts .payments-report .payments-calendar {
+      position: relative; }
+    .Charts .payments-report .ryms-container {
+      position: absolute;
+      roght: 0; }
+    .Charts .payments-report .ryms-selected_date_mp {
+      color: #66afe9; }
+    .Charts .payments-report .ryms-col_mp:hover {
+      background-color: #66afe9;
+      color: white; }
+    .Charts .payments-report .ryms-selected_cell {
+      background-color: #66afe9; }
+  .Charts .pie-charts {
+    display: flex;
+    justify-content: space-evenly; }
+    .Charts .pie-charts .payments-chart,
+    .Charts .pie-charts .incomes-chart {
+      display: inline-block; }
+      .Charts .pie-charts .payments-chart h3,
+      .Charts .pie-charts .incomes-chart h3 {
+        margin-bottom: 30px; }
+      .Charts .pie-charts .payments-chart .circle,
+      .Charts .pie-charts .incomes-chart .circle {
+        width: 250px; }

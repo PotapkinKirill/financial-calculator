@@ -1,0 +1,36 @@
+.Charts
+  width: 600px
+  margin: auto
+  font-size: 20px
+  .payments-report
+    display: flex
+    justify-content: space-around
+    text-align: left
+    margin-bottom: 40px
+    input
+      text-align: center
+      width: 60px
+      height: 20px
+    .payments-calendar
+      position: relative
+    .ryms
+      &-container
+        position: absolute
+        roght: 0
+      &-selected_date_mp
+        color: #66afe9
+      &-col_mp:hover
+        background-color: #66afe9
+        color: white
+      &-selected_cell
+        background-color: #66afe9
+  .pie-charts
+    display: flex
+    justify-content: space-evenly
+    .payments-chart,
+    .incomes-chart
+      display: inline-block
+      h3
+        margin-bottom: 30px
+      .circle
+        width: 250px

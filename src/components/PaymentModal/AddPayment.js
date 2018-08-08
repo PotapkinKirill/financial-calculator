@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 class AddPayment extends Component {
   updatePayment = (category, price) => {
     if (this.props.type === "Payment") {
-      this.props.onUpdatePaymentSum({
+      this.props.onUpdatePayment({
         category: category,
         price: price
       });
     } else {
-      this.props.onUpdateIncomeSum({
+      this.props.onUpdateIncome({
         category: category,
         price: price
       });
@@ -19,12 +19,14 @@ class AddPayment extends Component {
   addPayment = (category, price) => {
     if (this.props.type === "Payment") {
         this.props.onAddPayment({
+          date: new Date(),
           category: category,
           price: price,
           sum: price
         });
     } else {
         this.props.onAddIncome({
+          date: new Date(),
           category: category,
           price: price,
           sum: price
@@ -37,13 +39,14 @@ class AddPayment extends Component {
   }
 
   addPayments = () => {
-    var category = this.props.payment.category
-    var price = this.props.payment.price
-    var type = this.props.type
-    if (type === "Income") {
-      var payments = this.props.incomes
+    let category = this.props.payment.category
+    let price = this.props.payment.price
+    let type = this.props.type
+    let payments;
+    if (type === "Payment") {
+      payments = this.props.payments
     } else {
-      var payments = this.props.payments
+      payments = this.props.incomes
     }
     if (category && price) {
       if (payments.some(this.categoryExist)) {
@@ -75,14 +78,14 @@ const matchDispatchToProps = (dispatch) => {
     onAddPayment: (payload) => {
       dispatch({type: 'ADD_PAYMENT', payload: payload})
     },
-    onUpdatePaymentSum: (payload) => {
-      dispatch({type: 'UPDATE_PAYMENT_SUM', payload: payload})
+    onUpdatePayment: (payload) => {
+      dispatch({type: 'UPDATE_PAYMENT', payload: payload})
     },
     onAddIncome: (payload) => {
       dispatch({type: 'ADD_INCOME', payload: payload})
     },
-    onUpdateIncomeSum: (payload) => {
-      dispatch({type: 'UPDATE_INCOME_SUM', payload: payload})
+    onUpdateIncome: (payload) => {
+      dispatch({type: 'UPDATE_INCOME', payload: payload})
     }
   }
 }

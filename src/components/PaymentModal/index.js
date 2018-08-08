@@ -47,18 +47,19 @@ class Payments extends Component {
   }
 
   render(){
-    var type = this.props.type
-    if (type === "Income") {
-      var payments = this.props.incomes
+    let type = this.props.type;
+    let payments;
+    if (type === "Payment") {
+      payments = this.props.payments
     }
     else {
-      var payments = this.props.payments
+      payments = this.props.incomes
     }
     return(
       <div className={type}>
         <input
           onChange={this.handleCategoryChange}
-          className='Payments__category'
+          className = 'Payments__input Payments__category'
           placeholder={type + ' Category'}
           list='PaymentsList'
           value={this.state.category}
@@ -66,7 +67,7 @@ class Payments extends Component {
         <PaymentsList payments={payments}/>
         <input
           onChange={this.handlePriceChange}
-          className='Payments__price'
+          className='Payments__input Payments__price'
           placeholder={type + ' Price'}
           type='number'
           step='0.01'

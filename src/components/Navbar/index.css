@@ -1,55 +1,40 @@
-.Navbar{
+.Navbar {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
-}
-
-.Navbar li {
-  position: relative;
-  width: 100px;
-  display: inline-block;
-  border-top: 2px solid #66afe9;
-  border-bottom: 2px solid #66afe9;
-  padding: 4px 11px;
-  text-align: center;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.Navbar li.active {
-  background-color: #66afe9;
-  color: white;
-}
-
-.Navbar li:hover{
-  background-color: #a3cff1;
-  color: white;
-}
-
-.Navbar li.active:hover {
-  background-color: #66afe9;
-}
-
-.Navbar li:nth-of-type(1){
-  border-left: 2px solid #66afe9;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.Navbar li:last-child {
-  border-right: 2px solid #66afe9;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.Navbar li.active:after {
-  content: "";
-  position: absolute;
-  bottom: -12px;
-  left: 50px;
-  border-width: 10px 10px 0;
-  border-style: solid;
-  border-color: #66afe9 transparent;
-  display: block;
-  width: 0;
-}
+  margin-bottom: 50px; }
+  .Navbar li {
+    position: relative;
+    width: 100px;
+    display: inline-block;
+    border-top: 2px solid #66afe9;
+    border-bottom: 2px solid #66afe9;
+    padding: 4px 11px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer; }
+    .Navbar li:hover {
+      background-color: #a3cff1;
+      color: white; }
+    .Navbar li:nth-of-type(1) {
+      border-left: 2px solid #66afe9;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px; }
+    .Navbar li:last-child {
+      border-right: 2px solid #66afe9;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px; }
+    .Navbar li.active {
+      background-color: #66afe9;
+      color: white; }
+      .Navbar li.active:hover {
+        background-color: #66afe9; }
+      .Navbar li.active:after {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        left: 50px;
+        border-width: 10px 10px 0;
+        border-style: solid;
+        border-color: #66afe9 transparent;
+        display: block;
+        width: 0; }
