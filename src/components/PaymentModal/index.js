@@ -61,7 +61,7 @@ class PaymentsModal extends Component {
           list='PaymentsList'
           value={this.state.category}
         />
-        <PaymentsList payments={payments}/>
+        <PaymentsList type={type}/>
         <input
           onChange={this.handlePriceChange}
           className='Payments__input Payments__price'

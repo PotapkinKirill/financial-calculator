@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import YearMonthSelector from 'react-year-month-selector';
 
-export class Range extends Component {
+class Range extends Component {
   state = {
     isOpen: false,
   }
@@ -36,3 +36,5 @@ export class Range extends Component {
     )
   }
 }
+
+export default (Range)

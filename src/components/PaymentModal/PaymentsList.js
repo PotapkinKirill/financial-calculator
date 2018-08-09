@@ -1,13 +1,45 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-const PaymentsList = ({payments}) => {
-  return(
-    <datalist id="PaymentsList">
-      {payments.map((payments, index) =>
-        <option key={index} value={payments.category} />
-      )}
-    </datalist>
-  )
+
+class PaymentsList extends Component {
+  categoriesList = () => {
+    let payments
+    (this.props.type === "Payment")
+      ? payments = this.props.payments
+      : payments = this.props.incomes
+    
+    let list = payments.map(({category}) => {
+      return category
+    })
+    return this.removeDuplicates(list)
+  }
+
+
+  removeDuplicates = (arr) => {
+    let unique_array = []
+    for (let i = 0; i < arr.length; i++) {
+      if (unique_array.indexOf(arr[i]) === -1) {
+        unique_array.push(arr[i])
+      }
+    }
+    return unique_array
+  }
+
+  render() {
+    console.log(this.categoriesList())
+    return(
+      <datalist id="PaymentsList">
+        {this.categoriesList().map((category, index) =>
+          <option key={index} value={category}/>
+        )}
+      </datalist>
+    )
+  }
 }
 
-export default (PaymentsList)
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps)(PaymentsList)

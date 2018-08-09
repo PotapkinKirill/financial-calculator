@@ -11,7 +11,7 @@ const color = [
   '#FFFAF0', '#228B22', '#FF00FF'
 ]
 
-export const Circle = ({payments}) => {
+const Circle = ({payments}) => {
   return(
     <div className="circle">
       <PieChart
@@ -31,3 +31,5 @@ export const Circle = ({payments}) => {
     </div>
   )
 }
+
+export default (Circle)

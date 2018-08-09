@@ -1,8 +1,8 @@
 import './index.css'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Circle} from './Circle';
-import {Range} from './Range';
+import Circle from './Circle';
+import Range from './Range';
 
 class Charts extends Component {
   state = {
@@ -32,7 +32,7 @@ class Charts extends Component {
   render(){
     return(
       <div className="Charts">
-        <Range 
+        <Range
           handleChoose={this.handleChoose}
           year={this.state.year}
           month={this.state.month}

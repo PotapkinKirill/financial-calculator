@@ -17,15 +17,11 @@ const AddPayment = (props) => {
     });
   }
 
-  const categoryExist = ({category}) => {
-    return category === props.payment.category
-  }
-
   const addPayments = () => {
     let category = props.payment.category
     let price = props.payment.price
     if (category && price) {
-      if (props.payments.some(categoryExist)) {
+      if (props.payments.includes(category)) {
         updatePayment(category, price);
       } else {
         addPayment(category, price);
