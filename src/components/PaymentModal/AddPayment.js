@@ -32,10 +32,26 @@ const AddPayment = (props) => {
     }
   }
 
+  const addTest = () => {
+    return fetch('http://localhost:3001/api/v1/payment/add', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors'
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+  }
+
   return(
-    <button onClick={addPayments} className="Payments__save">
-      Add Payment
-    </button>
+    <div>
+      <button onClick={addPayments} className="Payments__save">
+        Add Payment
+      </button>
+      <button onClick={addTest}>TEST</button>
+    </div>
   )
 }
 

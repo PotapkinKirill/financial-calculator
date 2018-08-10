@@ -13,7 +13,9 @@
     "react-scripts": "1.1.4",
     "react-svg-piechart": "latest",
     "react-year-month-selector": "latest",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",

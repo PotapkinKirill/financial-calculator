@@ -4,6 +4,8 @@ export default function payments(state = [], action) {
       return [...state, addPayment(state, action).payload]
     case 'UPDATE_PAYMENT':
       return update(state, action)
+    case 'LOAD_PAYMENTS':
+      return action.payload
     default:
       return state
   }

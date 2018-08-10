@@ -2,23 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore} from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App'
 import rootReducers from './reducers/index'
-import {loadState, saveState} from './loadState'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk'
 
 
-const persistedState = loadState();
+//const persistedState = loadState();
 const store = createStore(
   rootReducers,
-  persistedState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(
+    applyMiddleware(thunk),
+  )
 )
-
-store.subscribe(() => {
-  saveState(store.getState())
-})
 
 window.store = store
 

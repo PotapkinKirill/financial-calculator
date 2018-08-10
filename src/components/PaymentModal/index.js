@@ -11,16 +11,16 @@ class PaymentsModal extends Component {
   }
 
   handleCategoryChange = ({target}) => {
-    let value = target.value
+    let category = target.value
     this.setState({
-      category: value
+      category: category
     });
-    this.writePriceIfExists(value)
+    this.writePriceIfExists(category)
   }
 
-  writePriceIfExists = (value) => {
+  writePriceIfExists = (category) => {
     this.props.payments.map((payment) => {
-      if (payment.category === value) {
+      if (payment.category === category) {
         this.setState({
           price: payment.price
         });
@@ -30,10 +30,10 @@ class PaymentsModal extends Component {
   }
 
   handlePriceChange = ({target}) => {
-    let value = Number(target.value)
-    if (value > 0) {
+    let price = Number(target.value)
+    if (price > 0) {
       this.setState({
-        price: value
+        price: price
       });
     }
     else {
@@ -77,7 +77,7 @@ class PaymentsModal extends Component {
           addPayment={this.props.addPayment}
           updatePayment={this.props.updatePayment}
         />
-        <PaymentsPrevious payments={payments}/>
+        <PaymentsPrevious payments={payments} categories={this.props.categories}/>
       </div>
     );
   }
