@@ -15,20 +15,31 @@ const PaymentsPrevious = ({payments, categories}) => {
             sum[category.id] = payment.price
           }
         }
-      })
-    })
+        return null
+      });
+      return null
+    });
+
+
+    categories.map((category) => {
+      console.log(payments.includes(category.id))
+    });
+
+
     return(
       <div className="Payments__views">
         <h3>Previous payments:</h3>
         <table>
           <tbody>
-          { payments.map((payment) =>
-            <tr key={payment.id}>
-              <td className="Payments__views-input-radio"><input type="radio" defaultChecked /></td>
-              <td className="Payments__views-category">{payment.category}:</td>
-              <td className="Payments__views-price">${Math.round(payment.sum * 100) / 100}</td>
-            </tr>
-          )}
+            {
+              categories.map((category) => 
+                <tr key={category.id}>
+                  <td className="Payments__views-input-radio"><input type="radio" defaultChecked /></td>
+                  <td className="Payments__views-category">{category.name}:</td>
+                  <td className="Payments__views-price">${Math.round(sum[category.id] * 100) / 100}</td>
+                </tr>
+              )
+            }
           </tbody>
         </table>
       </div>
