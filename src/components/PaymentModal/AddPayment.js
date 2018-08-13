@@ -2,26 +2,22 @@ import React from 'react';
 
 const AddPayment = (props) => {
   const updatePayment = (category, price) => {
-    props.updatePayment({
-      category: category,
-      price: price
-    });
+    props.updatePayment({category, price});
   }
 
   const addPayment = (category, price) => {
-    props.addPayment({
-      date: new Date(),
-      category: category,
-      price: price,
-      sum: price
-    });
+    props.addPayment({category, price});
+  }
+
+  const categoryExists = ({category}) => {
+    return category === props.payment.category
   }
 
   const addPayments = () => {
     let category = props.payment.category
     let price = props.payment.price
     if (category && price) {
-      if (props.payments.includes(category)) {
+      if (props.payments.some(categoryExists)) {
         updatePayment(category, price);
       } else {
         addPayment(category, price);
@@ -32,26 +28,23 @@ const AddPayment = (props) => {
     }
   }
 
-  const addTest = () => {
+  /*const addTest = () => {
     return fetch('http://localhost:3001/api/v1/payment/add', {
       method: 'POST',
       headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      body: JSON.stringify({category: 'MilkTEST2', price: 12}),
       mode: 'cors'
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-  }
+    }).then(response => response.json())
+  }*/
 
   return(
-    <div>
-      <button onClick={addPayments} className="Payments__save">
-        Add Payment
-      </button>
-      <button onClick={addTest}>TEST</button>
-    </div>
+    <button onClick={addPayments} className="Payments__save">
+      Add Payment
+    </button>
   )
 }
 

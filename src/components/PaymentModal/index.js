@@ -15,12 +15,11 @@ class PaymentsModal extends Component {
     this.setState({
       category: category
     });
-    this.writePriceIfExists(category)
   }
 
-  writePriceIfExists = (category) => {
+  writePriceIfExists = () => {
     this.props.payments.map((payment) => {
-      if (payment.category === category) {
+      if (payment.category === this.state.category) {
         this.setState({
           price: payment.price
         });
@@ -56,6 +55,7 @@ class PaymentsModal extends Component {
       <div className="Payments">
         <input
           onChange={this.handleCategoryChange}
+          onBlur={this.writePriceIfExists}
           className = 'Payments__input Payments__category'
           placeholder={type + ' Category'}
           list='PaymentsList'

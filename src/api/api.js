@@ -1,5 +1,5 @@
-const api = (params, REST, body = null) => {
-  return fetch('http://localhost:3001/api/v1/' + params, {
+const api = (path, REST, body = null) => {
+  return fetch('http://localhost:3001/api/v1/' + path, {
     method: REST,
     headers: {
       'Accept': 'application/json',

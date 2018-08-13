@@ -4,11 +4,9 @@ import {connect} from 'react-redux';
 
 class PaymentsList extends Component {
   categoriesList = () => {
-    let categories
-    (this.props.type === "Payment")
-      ? categories = this.props.category.payments
-      : categories = this.props.category.incomes
-    return categories
+    return (this.props.type === "Payment")
+      ? this.props.category.payments
+      : this.props.category.incomes
   }
 
   render() {
