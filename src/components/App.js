@@ -6,17 +6,17 @@ import Charts from './Charts'
 
 class App extends Component {
   state = {
-    render: 'Payments'
+    tab: 'Payments'
   }
 
   setTabRender = (tab) => {
     this.setState({
-      render: tab
+      tab: tab
     })
   }
 
   renderTab() {
-    switch (this.state.render) {
+    switch (this.state.tab) {
       case 'Payments':
         return <Payments />
       case 'Income':
@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return(
       <div className="App">
-        <Navbar setRender={this.setTabRender}/>
+        <Navbar setRender={this.setTabRender} tab={this.state.tab}/>
         {this.renderTab()}
       </div>
     );

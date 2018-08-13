@@ -8,15 +8,11 @@ class Navbar extends Component {
       "Income",
       "Charts",
       "Settings"
-    ],
-    defaultSelected: "Payments"
+    ]
   }
 
   handleClick = ({target}) => {
     let tab = target.dataset.value
-    this.setState({
-      defaultSelected: tab
-    })
     this.props.setRender(tab)
   }
 
@@ -28,7 +24,7 @@ class Navbar extends Component {
             data-value={tab}
             key={index}
             onClick={this.handleClick}
-            className={tab === this.state.defaultSelected ? "active" : null}
+            className={tab === this.props.tab ? "active" : null}
           >
             {tab}
           </li>

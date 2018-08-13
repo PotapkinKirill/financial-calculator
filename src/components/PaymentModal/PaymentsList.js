@@ -1,27 +1,13 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
 
-
-class PaymentsList extends Component {
-  categoriesList = () => {
-    return (this.props.type === "Payment")
-      ? this.props.category.payments
-      : this.props.category.incomes
-  }
-
-  render() {
-    return(
-      <datalist id="PaymentsList">
-        {this.categoriesList().map((category, index) =>
-          <option key={index} value={category.name}/>
-        )}
-      </datalist>
-    )
-  }
+const PaymentsList = ({categories}) => {
+  return(
+    <datalist id="PaymentsList">
+      {categories.map((category, index) =>
+        <option key={index} value={category.name}/>
+      )}
+    </datalist>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return state
-}
-
-export default connect(mapStateToProps)(PaymentsList)
+export default (PaymentsList)

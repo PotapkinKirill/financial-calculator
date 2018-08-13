@@ -49,7 +49,6 @@ class PaymentsModal extends Component {
   }
 
   render(){
-    let type = this.props.type;
     let payments = this.props.payments
     return(
       <div className="Payments">
@@ -57,15 +56,15 @@ class PaymentsModal extends Component {
           onChange={this.handleCategoryChange}
           onBlur={this.writePriceIfExists}
           className = 'Payments__input Payments__category'
-          placeholder={type + ' Category'}
+          placeholder={this.props.type + ' Category'}
           list='PaymentsList'
           value={this.state.category}
         />
-        <PaymentsList type={type}/>
+        <PaymentsList categories={this.props.categories}/>
         <input
           onChange={this.handlePriceChange}
           className='Payments__input Payments__price'
-          placeholder={type + ' Price'}
+          placeholder={this.props.type + ' Price'}
           type='number'
           step='0.01'
           value={this.state.price}

@@ -6,9 +6,10 @@ import { loadPaymentsCategory } from '../../actions/category'
 
 class Payments extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.loadPayments()
     this.props.loadPaymentsCategory()
+    console.log('PAYMENT')
   }
 
   render(){
