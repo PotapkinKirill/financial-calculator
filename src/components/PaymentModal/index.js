@@ -18,27 +18,37 @@ class PaymentsModal extends Component {
   }
 
   writePriceIfExists = () => {
-    this.props.payments.map((payment) => {
-      if (payment.category === this.state.category) {
-        this.setState({
-          price: payment.price
+    return this.state.category 
+      ? this.props.payments.map((payment) => {
+          return (payment.category === this.state.category)
+            ? this.setState({
+                price: payment.price
+              })
+            : null
+        })
+      : this.setState({
+          price: ''
         });
-      }
-      return null
-    });
   }
 
   handlePriceChange = ({target}) => {
     let price = Number(target.value)
+    target.style = '';
     if (price > 0) {
       this.setState({
         price: price
       });
     }
     else {
-      target.style='';
-      alert('Цена ≤ 0');
+      this.setState({
+        price: ''
+      })
+      target.style='border-color: red';
     }
+  }
+
+  setFocus = ({target}) => {
+    target.style = '';
   }
 
   setClear = () =>{
@@ -70,8 +80,8 @@ class PaymentsModal extends Component {
           value={this.state.price}
         />
         <AddPayment
-          setClear={this.setClear} 
-          payments={payments} 
+          setClear={this.setClear}
+          payments={payments}
           payment={this.state}
           addPayment={this.props.addPayment}
           updatePayment={this.props.updatePayment}

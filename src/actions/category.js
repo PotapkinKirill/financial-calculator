@@ -5,7 +5,7 @@ export const loadPaymentsCategory = () => dispatch => {
     .then(({categories}) => {
       dispatch({ type: 'LOAD_PAYMENTS_CATEGORY', payload: categories})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', response)})
+    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'loadPaymentsCategory', response)})
 }
 
 export const loadIncomesCategory = () => dispatch => {
@@ -13,5 +13,5 @@ export const loadIncomesCategory = () => dispatch => {
     .then(({categories}) => {
       dispatch({ type: 'LOAD_INCOMES_CATEGORY', payload: categories})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', response)})
+    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'loadPaymentsCategory', response)})
 }

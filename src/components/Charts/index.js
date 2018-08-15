@@ -1,10 +1,18 @@
 import './index.css'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { loadPayments } from '../../actions/payments'
+import { loadIncomes } from '../../actions/incomes'
 import Circle from './Circle';
 import Range from './Range';
 
 class Charts extends Component {
+
+  componentWillMount() {
+    this.props.loadPayments()
+    this.props.loadIncomes()
+  }
+
   state = {
     year: (new Date()).getFullYear(),
     month: (new Date()).getMonth()
@@ -15,19 +23,9 @@ class Charts extends Component {
       year: year,
       month: month
     })
+    this.props.loadPayments({year, month})
+    this.props.loadIncomes({year, month})
   }
-
-  paymentsForSelectedMonth = (payments) => {
-      let nextMonth = this.state.month + 1
-      let prevMonth = this.state.month - 1
-      return payments.filter((payment) => {
-        let date = new Date(payment.date)
-        if (new Date(this.state.year, prevMonth) < date && date < new Date(this.state.year, nextMonth)) {
-          return payment
-        }
-        return null
-      });
-    }
 
   render(){
     return(
@@ -40,11 +38,11 @@ class Charts extends Component {
         <div className="pie-charts">
           <div className="payments-chart">
             <h3>Payments Charts:</h3>
-            <Circle payments={this.paymentsForSelectedMonth(this.props.payments)}/>
+            <Circle payments={this.props.payments}/>
           </div>
           <div className="incomes-chart">
             <h3>Incoming Charts:</h3>
-            <Circle payments={this.paymentsForSelectedMonth(this.props.incomes)}/>
+            <Circle payments={this.props.incomes}/>
           </div>
         </div>
       </div>
@@ -56,4 +54,15 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps)(Charts)
+const matchDispatchToProps = (dispatch) => {
+  return {
+    loadIncomes(params) {
+      dispatch(loadIncomes(params));
+    },
+    loadPayments(params) {
+      dispatch(loadPayments(params));
+    },
+  }
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Charts)

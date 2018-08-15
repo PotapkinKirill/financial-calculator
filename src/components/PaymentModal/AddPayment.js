@@ -1,14 +1,6 @@
 import React from 'react';
 
 const AddPayment = (props) => {
-  const updatePayment = (category, price) => {
-    props.updatePayment({category, price});
-  }
-
-  const addPayment = (category, price) => {
-    props.addPayment({category, price});
-  }
-
   const categoryExists = ({category}) => {
     return category === props.payment.category
   }
@@ -18,9 +10,9 @@ const AddPayment = (props) => {
     let price = props.payment.price
     if (category && price) {
       if (props.payments.some(categoryExists)) {
-        updatePayment(category, price);
+        props.updatePayment({category, price});
       } else {
-        addPayment(category, price);
+        props.addPayment({category, price});
       }
       props.setClear();
     } else {

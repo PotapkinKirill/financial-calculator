@@ -56,3 +56,5 @@
       width: 80%; }
     .Payments__views-price {
       width: 15%; }
+  .Payments .wrong {
+    border-color: red; }

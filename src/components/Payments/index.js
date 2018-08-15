@@ -9,7 +9,6 @@ class Payments extends Component {
   componentWillMount() {
     this.props.loadPayments()
     this.props.loadPaymentsCategory()
-    console.log('PAYMENT')
   }
 
   render(){

@@ -1,7 +1,7 @@
 import api from './api'
 
-export const getPayments = () => {
-  return api('payment/all', 'GET')
+export const postLoadPayments = (params) => {
+  return api('payment/all', 'POST', JSON.stringify(params))
 }
 
 export const postAddPayment = (params) => {

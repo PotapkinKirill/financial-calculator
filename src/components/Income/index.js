@@ -9,7 +9,6 @@ class Income extends Component {
   componentWillMount() {
     this.props.loadIncomes()
     this.props.loadIncomesCategory()
-    console.log('INCOME')
   }
 
   render(){
