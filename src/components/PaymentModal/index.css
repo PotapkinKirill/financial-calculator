@@ -24,22 +24,39 @@
     .Payments__input:focus {
       border-color: #66afe9;
       outline: 0; }
-  .Payments__save {
+  .Payments__button {
     width: 410px;
     height: 38px;
     margin: auto;
     background-color: white;
     color: black;
-    border: 2px solid #66afe9;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     outline: 0; }
+  .Payments__save {
+    border: 2px solid #66afe9; }
     .Payments__save:hover {
       background-color: #66afe9;
       color: white; }
     .Payments__save:active {
-      background-color: #5b9dd1;
+      background-color: #477aa3;
+      color: white; }
+  .Payments__cancel {
+    border: 2px solid red; }
+    .Payments__cancel:hover {
+      background-color: red;
+      color: white; }
+    .Payments__cancel:active {
+      background-color: darkred;
+      color: white; }
+  .Payments__add {
+    border: 2px solid green; }
+    .Payments__add:hover {
+      background-color: green;
+      color: white; }
+    .Payments__add:active {
+      background-color: darkgreen;
       color: white; }
   .Payments__views {
     margin: auto;

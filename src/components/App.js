@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import Payments from './Payments'
 import Income from './Income'
 import Charts from './Charts'
+import Settings from './Settings'
 
 class App extends Component {
   state = {
@@ -23,8 +24,8 @@ class App extends Component {
         return <Income />
       case 'Charts':
         return <Charts />
-      //case 'Settings':
-      //  return <Settings />
+      case 'Settings':
+        return <Settings />
       default:
         return "Coming soon"
     }

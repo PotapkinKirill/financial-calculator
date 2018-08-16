@@ -1,0 +1,129 @@
+@keyframes rotating {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+.Category {
+  margin: auto;
+  width: 500px; }
+  .Category:not(:last-child) {
+    margin-bottom: 50px; }
+  .Category table {
+    width: 100%; }
+    .Category table tr {
+      line-height: 1.5; }
+    .Category table td {
+      font-size: 18px;
+      vertical-align: middle; }
+      .Category table td:nth-of-type(1) {
+        text-align: left;
+        width: 70%; }
+      .Category table td:nth-of-type(2) {
+        text-align: right;
+        width: 25%; }
+  .Category__add {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    padding: 4px;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 3px; }
+    .Category__add-button {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      /* Vertical line */
+      /* horizontal line */ }
+      .Category__add-button:before, .Category__add-button:after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        transition: transform 0.25s ease-out; }
+      .Category__add-button:before {
+        top: 0;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        margin-left: -1px; }
+      .Category__add-button:after {
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        margin-top: -1px; }
+    .Category__add:hover {
+      background-color: #66afe9;
+      cursor: pointer; }
+      .Category__add:hover .Category__add-button:before, .Category__add:hover .Category__add-button:after {
+        animation: rotating 2s linear infinite; }
+    .Category__add:active {
+      background-color: #477aa3; }
+      .Category__add:active .Category__add-button:before, .Category__add:active .Category__add-button:after {
+        animation: rotating 1s linear infinite; }
+  .Category .edit,
+  .Category .delete {
+    background-color: white;
+    border: none; }
+    .Category .edit:hover,
+    .Category .delete:hover {
+      cursor: pointer; }
+    .Category .edit:focus,
+    .Category .delete:focus {
+      outline: none; }
+    .Category .edit svg,
+    .Category .delete svg {
+      height: 20px;
+      width: 20px; }
+  .Category .edit:hover {
+    fill: #66afe9; }
+  .Category .edit:active {
+    fill: #477aa3; }
+  .Category .delete:hover {
+    fill: red; }
+  .Category .delete:active {
+    fill: darkred; }
+
+.fade {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 1;
+  background-color: rgba(128, 128, 128, 0.5); }
+
+.form {
+  position: absolute;
+  top: 150px;
+  z-index: 2;
+  margin: auto;
+  width: 500px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
+  .form__header {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    padding: 15px;
+    border-bottom: 1px solid lightgray; }
+  .form__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    padding: 15px;
+    background-color: white; }
+    .form__body input {
+      margin: 0; }
+  .form__footer {
+    display: flex;
+    height: 40px;
+    padding: 15px;
+    border-top: 1px solid lightgray; }
+    .form__footer .Payments__button {
+      width: 100px; }

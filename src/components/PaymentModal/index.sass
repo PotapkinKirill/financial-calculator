@@ -1,6 +1,6 @@
 @import '../../variable.sass'
 
-.Payments 
+.Payments
   text-align: center
   &__category
     border-radius: 4px
@@ -27,22 +27,39 @@
     &:focus
       border-color: $blue
       outline: 0
-  &__save 
+  &__button
     width: 410px
     height: 38px
     margin: auto
     background-color: white
     color: black
-    border: 2px solid $blue
     border-radius: 4px
     font-size: 16px
     cursor: pointer
     outline: 0
+  &__save
+    border: 2px solid $blue
     &:hover 
       background-color: $blue
       color: white
     &:active 
       background-color: $dark-blue
+      color: white
+  &__cancel
+    border: 2px solid red
+    &:hover 
+      background-color: red
+      color: white
+    &:active 
+      background-color: darkred
+      color: white
+  &__add
+    border: 2px solid green
+    &:hover 
+      background-color: green
+      color: white
+    &:active 
+      background-color: darkgreen
       color: white
   &__views 
     margin: auto

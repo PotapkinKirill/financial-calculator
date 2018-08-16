@@ -1,0 +1,137 @@
+@import '../../variable.sass'
+
+@keyframes rotating
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
+
+.Category
+  margin: auto
+  width: 500px
+  &:not(:last-child)
+    margin-bottom: 50px
+  table
+    width: 100%
+    tr 
+      line-height: 1.5
+    td
+      font-size: 18px
+      vertical-align: middle
+      &:nth-of-type(1)
+        text-align: left
+        width: 70%
+      &:nth-of-type(2)
+        text-align: right
+        width: 25%
+  &__add
+    display: inline-block
+    width: 10px
+    height: 10px
+    padding: 4px
+    background-color: black
+    border: 1px solid black
+    border-radius: 3px
+    &-button
+      position: relative
+      width: 100%
+      height: 100%
+      &:before,
+      &:after
+        content: ""
+        position: absolute
+        background-color: white
+        transition: transform 0.25s ease-out
+      /* Vertical line */
+      &:before
+        top: 0
+        left: 50%
+        width: 2px
+        height: 100%
+        margin-left: -1px
+      /* horizontal line */
+      &:after
+        top: 50%
+        left: 0
+        width: 100%
+        height: 2px
+        margin-top: -1px
+    &:hover
+      background-color: $blue
+      cursor: pointer
+      .Category__add-button
+        &:before,
+        &:after
+          animation: rotating 2s linear infinite
+    &:active
+      background-color: $dark-blue
+      .Category__add-button
+        &:before,
+        &:after
+          animation: rotating 1s linear infinite
+  .edit,
+  .delete
+    background-color: white
+    border: none
+    &:hover
+      cursor: pointer
+    &:focus
+      outline: none
+    svg
+      height: 20px
+      width: 20px
+  .edit
+    &:hover
+      fill: $blue
+    &:active
+      fill: $dark-blue
+  .delete
+    &:hover
+      fill: red
+    &:active
+      fill: darkred
+
+.fade
+  content: ''
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 1
+  opacity: 1
+  background-color: rgba(128,128,128, 0.5)
+.form
+  position: absolute
+  top: 150px
+  z-index: 2
+  margin: auto
+  width: 500px
+  background-color: white
+  border-radius: 5px
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5)
+  &__header
+    display: flex
+    align-items: center
+    height: 20px
+    padding: 15px
+    border-bottom: 1px solid lightgray
+  &__body
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 70px
+    padding: 15px
+    background-color: white
+    input
+      margin: 0
+  &__footer
+    display: flex
+    height: 40px
+    padding: 15px
+    border-top: 1px solid lightgray
+    .Payments__button
+      width: 100px
+      
+
+  

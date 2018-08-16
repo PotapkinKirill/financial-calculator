@@ -34,7 +34,7 @@ const AddPayment = (props) => {
   }*/
 
   return(
-    <button onClick={addPayments} className="Payments__save">
+    <button onClick={addPayments} className="Payments__button Payments__save">
       Add Payment
     </button>
   )
