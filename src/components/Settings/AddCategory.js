@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class AddCategory extends Component {
   state = {
     category: null,
-    disabled: false
+    disabled: true
   }
 
   handleClickAdd = () => {
@@ -12,11 +12,12 @@ class AddCategory extends Component {
   }
 
   handleChange = ({target}) => {
+    let verifyName = this.ifExists(target.value) || target.value === ''
     this.setState({
       category: target.value,
-      disabled: this.ifExists(target.value)
+      disabled: verifyName
     })
-    if (this.ifExists(target.value)) {
+    if (verifyName) {
       target.style = 'border-color: red'
     } else {
       target.style = ''

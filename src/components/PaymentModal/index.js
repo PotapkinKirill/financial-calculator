@@ -12,9 +12,17 @@ class PaymentsModal extends Component {
 
   handleCategoryChange = ({target}) => {
     let category = target.value
-    this.setState({
-      category: category
-    });
+    target.style = ''
+    if (category) {
+      this.setState({
+        category
+      })
+    } else {
+      this.setState({
+        category: ''
+      })
+      target.style='border-color: red'
+    }
   }
 
   writePriceIfExists = () => {
@@ -28,34 +36,33 @@ class PaymentsModal extends Component {
         })
       : this.setState({
           price: ''
-        });
+        })
   }
 
   handlePriceChange = ({target}) => {
     let price = Number(target.value)
-    target.style = '';
+    target.style = ''
     if (price > 0) {
       this.setState({
-        price: price
-      });
-    }
-    else {
+        price
+      })
+    } else {
       this.setState({
         price: ''
       })
-      target.style='border-color: red';
+      target.style='border-color: red'
     }
   }
 
   setFocus = ({target}) => {
-    target.style = '';
+    target.style = ''
   }
 
   setClear = () => {
     this.setState({
       category: '',
       price: ''
-    });
+    })
   }
 
   sort_by_date = (a, b) => {

@@ -20,22 +20,12 @@ const AddPayment = (props) => {
     }
   }
 
-  /*const addTest = () => {
-    return fetch('http://localhost:3001/api/v1/payment/add', {
-      method: 'POST',
-      headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({category: 'MilkTEST2', price: 12}),
-      mode: 'cors'
-    }).then(response => response.json())
-  }*/
-
   return(
-    <button onClick={addPayments} className="Payments__button Payments__save">
-      Add Payment
+    <button
+      onClick={addPayments}
+      className="Payments__button Payments__save"
+      disabled={!(props.payment.category && props.payment.price)}
+      >Add Payment
     </button>
   )
 }

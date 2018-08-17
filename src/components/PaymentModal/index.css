@@ -75,5 +75,13 @@
       width: 80%; }
     .Payments__views-price {
       width: 15%; }
+    .Payments__views p {
+      text-align: center; }
+    .Payments__views button {
+      width: 100px; }
+      .Payments__views button.prev {
+        float: left; }
+      .Payments__views button.next {
+        float: right; }
   .Payments .wrong {
     border-color: red; }
