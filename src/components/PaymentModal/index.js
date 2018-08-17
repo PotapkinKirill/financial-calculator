@@ -51,15 +51,19 @@ class PaymentsModal extends Component {
     target.style = '';
   }
 
-  setClear = () =>{
+  setClear = () => {
     this.setState({
       category: '',
       price: ''
     });
   }
 
+  sort_by_date = (a, b) => {
+    return new Date(b.created_at) - new Date(a.created_at)
+  }
+
   render(){
-    let payments = this.props.payments
+    let payments  = this.props.payments.slice().sort((a, b) => this.sort_by_date(a,b))
     return(
       <div className="Payments">
         <input

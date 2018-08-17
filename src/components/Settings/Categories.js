@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Pencil from './Pencil'
 import Trash from './Trash'
-import AddCategory from './AddCategry'
+import AddCategory from './AddCategory'
 import EditCategory from './EditCategory'
 
 class Categories extends Component {
@@ -44,7 +44,8 @@ class Categories extends Component {
     if (this.state.add)
       form = <AddCategory
                 onClose={this.handleClose}
-                onAddCategory={this.props.addCategory}
+                addCategory={this.props.addCategory}
+                type={this.props.type}
               />
     if (this.state.edit)
       form = <EditCategory

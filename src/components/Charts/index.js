@@ -1,16 +1,14 @@
 import './index.css'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadPayments } from '../../actions/payments'
-import { loadIncomes } from '../../actions/incomes'
+import { loadCategoriesSum } from '../../actions/category'
 import Circle from './Circle';
 import Range from './Range';
 
 class Charts extends Component {
 
   componentWillMount() {
-    this.props.loadPayments()
-    this.props.loadIncomes()
+    this.props.loadCategoriesSum(this.state)
   }
 
   state = {
@@ -23,11 +21,12 @@ class Charts extends Component {
       year: year,
       month: month
     })
-    this.props.loadPayments({year, month})
-    this.props.loadIncomes({year, month})
+    this.props.loadCategoriesSum({year, month})
   }
 
   render(){
+    let categories_payment = this.props.categories.filter(category => category.type_of_pay === 'payment')
+    let categories_income = this.props.categories.filter(category => category.type_of_pay === 'income')
     return(
       <div className="Charts">
         <Range
@@ -38,11 +37,11 @@ class Charts extends Component {
         <div className="pie-charts">
           <div className="payments-chart">
             <h3>Payments Charts:</h3>
-            <Circle payments={this.props.payments}/>
+            <Circle payments={categories_payment}/>
           </div>
           <div className="incomes-chart">
             <h3>Incoming Charts:</h3>
-            <Circle payments={this.props.incomes}/>
+            <Circle payments={categories_income}/>
           </div>
         </div>
       </div>
@@ -56,12 +55,9 @@ const mapStateToProps = (state) => {
 
 const matchDispatchToProps = (dispatch) => {
   return {
-    loadIncomes(params) {
-      dispatch(loadIncomes(params));
-    },
-    loadPayments(params) {
-      dispatch(loadPayments(params));
-    },
+    loadCategoriesSum(params) {
+      dispatch(loadCategoriesSum(params));
+    }
   }
 }
 

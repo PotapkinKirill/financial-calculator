@@ -12,7 +12,7 @@ export const addIncome = (income) => dispatch => {
   postAddIncome(income)
     .then(({income, category}) => {
       dispatch({ type: 'ADD_INCOME', payload: income})
-      dispatch({ type: 'UPDATE_INCOMES_CATEGORY', payload: category})
+      dispatch({ type: 'ADD_CATEGORY', payload: category})
     })
     .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'addIncome', response)})
 }

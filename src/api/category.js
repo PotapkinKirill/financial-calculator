@@ -1,11 +1,11 @@
 import api from './api'
 
-export const getPaymentsCategory = () => {
-  return api('categories/payments', 'GET')
+export const getCategories = () => {
+  return api('categories/all', 'GET')
 }
 
-export const getIncomesCategory = () => {
-  return api('categories/incomes', 'GET')
+export const postCategoriesSum = (params) => {
+  return api('categories/all', 'POST', JSON.stringify(params))
 }
 
 export const postAddCategory = (params) => {
@@ -17,6 +17,5 @@ export const postUpdateCategory = (params) => {
 }
 
 export const postDeleteCategory = (params) => {
-  console.log(params)
   return api('categories/delete', 'POST', JSON.stringify(params))
 }

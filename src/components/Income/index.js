@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import PaymentModal from '../PaymentModal';
 import { connect } from 'react-redux';
 import { loadIncomes, addIncome, updateIncome } from '../../actions/incomes'
-import { loadIncomesCategory } from '../../actions/category'
+import { loadCategories } from '../../actions/category'
 
 class Income extends Component {
 
   componentWillMount() {
     this.props.loadIncomes()
-    this.props.loadIncomesCategory()
+    this.props.loadCategories()
   }
 
   render(){
@@ -16,7 +16,7 @@ class Income extends Component {
       <PaymentModal
         type = "Income"
         payments = {this.props.incomes}
-        categories = {this.props.category.incomes}
+        categories = {this.props.categories.filter(category => category.type_of_pay === 'income')}
         addPayment = {this.props.onAddIncome}
         updatePayment = {this.props.onUpdateIncome}
       />
@@ -39,8 +39,8 @@ const matchDispatchToProps = (dispatch) => {
     loadIncomes() {
       dispatch(loadIncomes());
     },
-    loadIncomesCategory() {
-      dispatch(loadIncomesCategory());
+    loadCategories() {
+      dispatch(loadCategories());
     },
   }
 }

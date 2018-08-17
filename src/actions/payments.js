@@ -12,7 +12,7 @@ export const addPayment = (payment) => dispatch => {
   postAddPayment(payment)
     .then(({payment, category}) => {
       dispatch({ type: 'ADD_PAYMENT', payload: payment})
-      dispatch({ type: 'UPDATE_PAYMENTS_CATEGORY', payload: category})
+      dispatch({ type: 'ADD_CATEGORY', payload: category})
     })
     .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'addPayment', response)})
 }

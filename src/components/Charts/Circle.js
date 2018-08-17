@@ -12,21 +12,20 @@ const color = [
 ]
 
 const Circle = ({payments}) => {
+  const data = payments.map((payment, index) => {
+    return {
+      color: color[index],
+      value: payment.sum,
+      title: payment.name + ', ' + payment.sum
+    }
+  })
   return(
     <div className="circle">
       <PieChart
         className="test"
         expandOnHover={true}
         expandSize={5}
-        data = {
-          payments.map((payment, index) => {
-            return {
-              color: color[index],
-              value: payment.sum,
-              title: payment.category + ', ' + payment.sum
-            }
-          })
-        }
+        data = {data}
       />
     </div>
   )
