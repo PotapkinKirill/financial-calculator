@@ -16,15 +16,20 @@ class Settings extends Component {
   }
 
   onAddCategory = (category, type) => {
-    if (type === 'Payments') {
-      this.props.addCategory({category: category, type: 'payment'})
-    }
-    else if (type === 'Incoming') {
-      this.props.addCategory({category: category, type: 'income'})
-    }
+    if (type === 'Payments')
+      this.props.addCategory({category, type: 'payment'})
+    else if (type === 'Incoming')
+      this.props.addCategory({category, type: 'income'})
   }
 
-  render(){
+  onUpdateCategory = (id, category, type) => {
+    if (type === 'Payments')
+      this.props.updateCategory({id, category, type: 'payment'})
+    else if (type === 'Incoming')
+      this.props.updateCategory({id, category, type: 'income'})
+  }
+
+  render() {
     let categories_payment = this.props.categories.filter(category => category.type_of_pay === 'payment')
     let categories_income = this.props.categories.filter(category => category.type_of_pay === 'income')
     return(
@@ -34,10 +39,14 @@ class Settings extends Component {
           categories={categories_payment}
           addCategory={this.onAddCategory}
           deleteCategory={this.props.deleteCategory}
+          updateCategory={this.onUpdateCategory}
         />
         <Categories
           type='Incoming'
           categories={categories_income}
+          addCategory={this.onAddCategory}
+          deleteCategory={this.props.deleteCategory}
+          updateCategory={this.onUpdateCategory}
         />
       </div>
     );

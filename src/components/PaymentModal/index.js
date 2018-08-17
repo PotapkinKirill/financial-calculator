@@ -18,7 +18,7 @@ class PaymentsModal extends Component {
   }
 
   writePriceIfExists = () => {
-    return this.state.category 
+    return this.state.category
       ? this.props.payments.map((payment) => {
           return (payment.category === this.state.category)
             ? this.setState({

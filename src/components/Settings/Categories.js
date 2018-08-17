@@ -8,7 +8,6 @@ class Categories extends Component {
   state = {
     add: false,
     edit: false,
-    delete: false,
     category: null
   }
 
@@ -34,7 +33,6 @@ class Categories extends Component {
     this.setState({
       add: false,
       edit: false,
-      delete: false,
       category: null
     })
   }

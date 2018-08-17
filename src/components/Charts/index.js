@@ -24,9 +24,14 @@ class Charts extends Component {
     this.props.loadCategoriesSum({year, month})
   }
 
+  sort = (categories, type) => {
+    return categories.filter(category => category.type_of_pay === type)
+                     .sort((a, b) => b.sum - a.sum)
+  }
+
   render(){
-    let categories_payment = this.props.categories.filter(category => category.type_of_pay === 'payment')
-    let categories_income = this.props.categories.filter(category => category.type_of_pay === 'income')
+    let categories_payment = this.sort(this.props.categories, 'payment')
+    let categories_income = this.sort(this.props.categories, 'income')
     return(
       <div className="Charts">
         <Range

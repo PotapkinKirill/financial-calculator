@@ -34,6 +34,8 @@
     font-size: 16px;
     cursor: pointer;
     outline: 0; }
+    .Payments__button:disabled {
+      cursor: not-allowed; }
   .Payments__save {
     border: 2px solid #66afe9; }
     .Payments__save:hover {
