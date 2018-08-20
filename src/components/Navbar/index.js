@@ -18,18 +18,20 @@ class Navbar extends Component {
 
   render() {
     return(
-      <ul className="Navbar">
-      {this.state.tabs.map((tab, index) => 
-          <li 
-            data-value={tab}
-            key={index}
-            onClick={this.handleClick}
-            className={tab === this.props.tab ? "active" : null}
-          >
-            {tab}
-          </li>
-      )}
-      </ul>
+      <div className="Navbar">
+        <ul className="Navbar__list">
+        {this.state.tabs.map((tab, index) => 
+            <li 
+              data-value={tab}
+              key={index}
+              onClick={this.handleClick}
+              className={tab === this.props.tab ? "active" : null}
+            >
+              {tab}
+            </li>
+        )}
+        </ul>
+      </div>
     );
   }
 }

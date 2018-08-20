@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PreviousPage from './PreviousPage'
 
 class PaymentsPrevious extends Component {
   state = {
@@ -21,42 +22,25 @@ class PaymentsPrevious extends Component {
     let paging
     let payments = this.props.payments
     if (this.props.payments.length > 5) {
-      let pages = parseInt(this.props.payments.length / 5, 10)
+      let pages = Math.ceil(this.props.payments.length / 5)
       let { page } = this.state
       payments = this.props.payments.slice(0 + page * 5, 5 + page * 5)
-      paging = <div><p>Page {page + 1}/{pages}</p>
-                      { 
-                        page > 0 &&
-                        <button
-                          className='Payments__button prev'
-                          onClick={this.handleClickPrev}>
-                          {'<< Prev'}
-                        </button>
-                      }
-                      {
-                        page < pages - 1 &&
-                        <button
-                          className = 'Payments__button next'
-                          onClick={this.handleClickNext}
-                          >{'Next >>'}
-                        </button> 
-                      }
-                    </div>
+      paging = <PreviousPage
+                page={page} pages={pages}
+                handleClickPrev={this.handleClickPrev}
+                handleClickNext={this.handleClickNext}
+               />
     }
     return (payments.length !== 0)
-    && <div className="Payments__views">
-          <h3>Previous payments:</h3>
-          <table>
-            <tbody>
-              {payments.map((payment) => 
-                  <tr key={payment.id}>
-                      <td className="Payments__views-input-radio"><input type="radio" defaultChecked /></td>
-                      <td className="Payments__views-category">{payment.category}:</td>
-                      <td className="Payments__views-price">${Math.round(payment.price * 100) / 100}</td>
-                  </tr>
-              )}
-            </tbody>
-          </table>
+    && <div className="previous">
+          <h3 className='previous__title'>Previous payments:</h3>
+          {payments.map((payment) => 
+              <div className='previous__list' key={payment.id}>
+                  <span><input type="radio" defaultChecked /></span>
+                  <span className="previous__list--category">{payment.category}:</span>
+                  <span className="previous__list--price">${Math.round(payment.price * 100) / 100}</span>
+              </div>
+          )}
           {paging}
         </div>
   }

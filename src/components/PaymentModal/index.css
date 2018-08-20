@@ -1,87 +1,103 @@
 .Payments {
+  width: 80%;
+  margin: auto;
   text-align: center; }
-  .Payments__category {
-    border-radius: 4px; }
-    .Payments__category::-webkit-calendar-picker-indicator {
-      opacity: 1; }
-      .Payments__category::-webkit-calendar-picker-indicator:hover {
-        background-color: #a3cff1; }
-  .Payments__price::-webkit-inner-spin-button, .Payments__price::-webkit-outer-spin-button {
-    opacity: 1; }
-  .Payments__input {
-    display: block;
-    width: 400px;
-    height: 25px;
-    margin: auto;
-    padding: 5px;
-    border: 2px solid lightgray;
-    background-color: white;
-    font-size: 16px;
-    margin-bottom: 30px;
+
+.previous {
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  text-align: left;
+  height: 250px; }
+  .previous__title {
+    margin-bottom: 10px; }
+  .previous__list {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2; }
+    .previous__list--category {
+      width: 80%; }
+    .previous__list--price {
+      width: 15%; }
+  .previous__page {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     text-align: center; }
-    .Payments__input:hover {
-      border-color: #a3cff1; }
-    .Payments__input:focus {
-      border-color: #66afe9;
-      outline: 0; }
-  .Payments__button {
-    width: 410px;
-    height: 38px;
-    margin: auto;
-    background-color: white;
-    color: black;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+
+.empty {
+  color: red;
+  text-align: center; }
+
+.input,
+.button {
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  border: 2px solid lightgray;
+  background-color: white;
+  font-size: 16px;
+  text-align: center;
+  user-select: none; }
+
+.input {
+  margin-bottom: 30px; }
+  .input--category {
+    border-radius: 4px; }
+    .input--category::-webkit-calendar-picker-indicator {
+      opacity: 1; }
+      .input--category::-webkit-calendar-picker-indicator:hover {
+        background-color: #a3cff1; }
+  .input--price::-webkit-inner-spin-button, .input--price::-webkit-outer-spin-button {
+    opacity: 1; }
+  .input:hover {
+    border-color: #a3cff1; }
+  .input:focus {
+    border-color: #66afe9;
     outline: 0; }
-    .Payments__button:disabled {
-      cursor: not-allowed; }
-  .Payments__save {
+  .input--incorrect {
+    border-color: red; }
+    .input--incorrect:hover, .input--incorrect:focus {
+      border-color: red; }
+
+.button {
+  border-radius: 4px;
+  color: black;
+  cursor: pointer;
+  outline: 0; }
+  .button:disabled {
+    cursor: not-allowed; }
+  .button_size_s {
+    width: 100px; }
+  .button--prev {
+    float: left; }
+  .button--next {
+    float: right; }
+  .button--add {
     border: 2px solid #66afe9; }
-    .Payments__save:hover {
+    .button--add:hover {
       background-color: #66afe9;
       color: white; }
-    .Payments__save:active {
+    .button--add:active {
       background-color: #477aa3;
       color: white; }
-  .Payments__cancel {
-    border: 2px solid red; }
-    .Payments__cancel:hover {
-      background-color: red;
-      color: white; }
-    .Payments__cancel:active {
-      background-color: darkred;
-      color: white; }
-  .Payments__add {
+  .button--save {
     border: 2px solid green; }
-    .Payments__add:hover {
+    .button--save:hover {
       background-color: green;
       color: white; }
-    .Payments__add:active {
+    .button--save:active {
       background-color: darkgreen;
       color: white; }
-  .Payments__views {
-    margin: auto;
-    margin-top: 50px;
-    width: 410px;
-    text-align: left; }
-    .Payments__views h3 {
-      margin-bottom: 10px; }
-    .Payments__views tr {
-      line-height: 2; }
-    .Payments__views input {
-      margin-right: 10px; }
-    .Payments__views-category {
-      width: 80%; }
-    .Payments__views-price {
-      width: 15%; }
-    .Payments__views p {
-      text-align: center; }
-    .Payments__views button {
-      width: 100px; }
-      .Payments__views button.prev {
-        float: left; }
-      .Payments__views button.next {
-        float: right; }
-  .Payments .wrong {
-    border-color: red; }
+  .button--cancel {
+    border: 2px solid red; }
+    .button--cancel:hover {
+      background-color: red;
+      color: white; }
+    .button--cancel:active {
+      background-color: darkred;
+      color: white; }
+
+@media screen and (max-width: 1024px) {
+  .button:disabled {
+    background-color: #e5e5e5; } }

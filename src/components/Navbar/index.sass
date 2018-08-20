@@ -1,12 +1,15 @@
 @import '../../variable.sass'
   
 .Navbar
-  display: flex
-  justify-content: center
-  margin-bottom: 30px
+  width: 90%
+  margin: auto
+  .Navbar__list
+    display: flex
+    justify-content: center
+    margin-bottom: 30px
   li
     position: relative
-    width: 100px
+    width: 25%
     display: inline-block
     border-top: 2px solid $blue
     border-bottom: 2px solid $blue
@@ -33,10 +36,15 @@
       &:after 
         content: ""
         position: absolute
-        bottom: -12px
-        left: 50px
+        bottom: -11px
+        left: calc(50% - 10px)
         border-width: 10px 10px 0
         border-style: solid
         border-color: $blue transparent
         display: block
         width: 0
+
+@media screen and (max-width: 450px)
+  .Navbar
+    li
+      font-size: 15px

@@ -23,7 +23,7 @@ const AddPayment = (props) => {
   return(
     <button
       onClick={addPayments}
-      className="Payments__button Payments__save"
+      className="button button--add"
       disabled={!(props.payment.category && props.payment.price)}
       >Add Payment
     </button>

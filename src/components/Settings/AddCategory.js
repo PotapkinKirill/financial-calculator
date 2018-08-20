@@ -12,16 +12,14 @@ class AddCategory extends Component {
   }
 
   handleChange = ({target}) => {
-    let verifyName = this.ifExists(target.value) || target.value === ''
+    let isCategoryExists = this.ifExists(target.value)
+    let isCategoryEmpty = target.value === ''
     this.setState({
       category: target.value,
-      disabled: verifyName
+      disabled: isCategoryExists || isCategoryEmpty,
+      isCategoryExists,
+      isCategoryEmpty
     })
-    if (verifyName) {
-      target.style = 'border-color: red'
-    } else {
-      target.style = ''
-    }
   }
 
   ifExists = (category) => {
@@ -39,8 +37,10 @@ class AddCategory extends Component {
           </div>
 
           <div className='form__body'>
+            {this.state.isCategoryEmpty && <label className='empty'>Please, fill category</label>}
+            {this.state.isCategoryExists && <label className='empty'>Category exists</label>}
             <input
-              className = 'Payments__input'
+              className={'input ' + (this.state.isCategoryEmpty || this.state.isCategoryExists ? 'input--incorrect' : '')}
               defaultValue={this.state.category}
               onChange={this.handleChange}
             />
@@ -48,14 +48,14 @@ class AddCategory extends Component {
 
           <div className='form__footer'>
             <button 
-              className='Payments__button Payments__add'
+              className='button button_size_s button--add'
               onClick={this.handleClickAdd}
               disabled={this.state.disabled}
               >Add
             </button>
 
             <button
-              className='Payments__button Payments__cancel'
+              className='button button_size_s button--cancel'
               onClick={this.props.onClose}
               >Cancel
             </button>

@@ -12,16 +12,16 @@ class EditCategory extends Component {
   }
 
   handleChange = ({target}) => {
-    let verifyName = this.ifExists(target.value) || target.value === this.props.category.name || target.value === ''
+    let isCategoryExists = this.ifExists(target.value)
+    let isCategoryEmpty = target.value === ''
+    let isSameName = target.value === this.props.category.name
     this.setState({
       category: target.value,
-      disabled: verifyName
+      disabled: isCategoryExists || isCategoryEmpty || isSameName,
+      isCategoryExists,
+      isCategoryEmpty,
+      isSameName
     })
-    if (verifyName) {
-      target.style = 'border-color: red'
-    } else {
-      target.style = ''
-    }
   }
 
   ifExists = (category) => {
@@ -31,6 +31,7 @@ class EditCategory extends Component {
   }
   
   render(){
+    let { isCategoryEmpty, isCategoryExists, isSameName } = this.state
     return(
       <div className='EditCategory'>
         <div className='fade' onClick={this.props.onClose}/>
@@ -41,8 +42,11 @@ class EditCategory extends Component {
           </div>
 
           <div className='form__body'>
+            {isCategoryEmpty && <label className='empty'>Please, fill category</label>}
+            {isCategoryExists && <label className='empty'>Category exists</label>}
+            {isSameName && <label className='empty'>This is same name</label>}
             <input
-              className='Payments__input'
+              className={'input ' + (isCategoryEmpty || isCategoryExists || isSameName ? 'input--incorrect' : '')}
               defaultValue={this.state.category}
               onChange={this.handleChange}
             />
@@ -50,14 +54,14 @@ class EditCategory extends Component {
 
           <div className='form__footer'>
             <button 
-              className='Payments__button Payments__save'
+              className='button button_size_s button--save'
               onClick={this.props.updateCategory}
               disabled={this.state.disabled}
               >Save
             </button>
 
             <button
-              className='Payments__button Payments__cancel'
+              className='button button_size_s button--cancel'
               onClick={this.props.onClose}
               >Cancel
             </button>

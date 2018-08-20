@@ -56,7 +56,7 @@ class Categories extends Component {
         <table>
           <thead>
             <tr>
-              <td>{this.props.type} categories</td>
+              <td><h4>{this.props.type} categories</h4></td>
               <td>Add new</td>
               <td onClick={this.handleClickAdd}>
                 <div className='Category__add'>
