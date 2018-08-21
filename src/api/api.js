@@ -1,4 +1,4 @@
-const baseUrl = process.env.BASE_URL
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const api = (path, REST, body = null) => {
   return fetch(baseUrl + path, {
