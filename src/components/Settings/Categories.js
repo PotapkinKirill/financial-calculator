@@ -58,8 +58,8 @@ class Categories extends Component {
             <tr>
               <td><h4>{this.props.type} categories</h4></td>
               <td>Add new</td>
-              <td onClick={this.handleClickAdd}>
-                <div className='Category__add'>
+              <td>
+                <div className='Category__add' onClick={this.handleClickAdd}>
                   <div className='Category__add-button'></div>
                 </div>
               </td>
