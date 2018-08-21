@@ -1,5 +1,7 @@
+const baseUrl = process.env.BASE_URL
+
 const api = (path, REST, body = null) => {
-  return fetch('http://localhost:3001/api/v1/' + path, {
+  return fetch(baseUrl + path, {
     method: REST,
     headers: {
       'Accept': 'application/json',

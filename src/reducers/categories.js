@@ -6,6 +6,8 @@ export default function categories(state = [], action) {
       return action.payload
     case 'ADD_CATEGORY':
       return [...state, action.payload]
+    case 'UPDATE_CATEGORY':
+      return updateCategory(state, action)
     case 'DELETE_CATEGORY':
       return deleteCategory(state, action)
     default:
@@ -19,4 +21,12 @@ const withoutOther = (action) => {
 
 const deleteCategory = (state, action) => {
   return (state.filter(elem => elem.id !== action.payload.id))
+}
+
+const updateCategory = (state, action) => {
+  return state.map(category => {
+    return category.id === action.payload.id
+      ? action.payload
+      : category
+  })
 }

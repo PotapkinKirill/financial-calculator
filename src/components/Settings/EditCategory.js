@@ -8,7 +8,7 @@ class EditCategory extends Component {
   }
 
   handleClickSave = () => {
-    this.props.updateCategory(this.props.category.id, this.state.category, this.props.type)
+    this.props.updateCategory(this.props.category.id, this.state.category)
   }
 
   handleChange = ({target}) => {
@@ -55,7 +55,7 @@ class EditCategory extends Component {
           <div className='form__footer'>
             <button 
               className='button button_size_s button--save'
-              onClick={this.props.updateCategory}
+              onClick={this.handleClickSave}
               disabled={this.state.disabled}
               >Save
             </button>

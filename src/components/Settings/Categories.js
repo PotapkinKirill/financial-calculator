@@ -48,7 +48,7 @@ class Categories extends Component {
     if (this.state.edit)
       form = <EditCategory
                 onClose={this.handleClose}
-                onUpdateCategory={this.props.updateCategory}
+                updateCategory={this.props.updateCategory}
                 category={this.state.category}
               />
     return(

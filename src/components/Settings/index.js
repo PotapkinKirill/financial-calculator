@@ -22,11 +22,8 @@ class Settings extends Component {
       this.props.addCategory({category, type: 'income'})
   }
 
-  onUpdateCategory = (id, category, type) => {
-    if (type === 'Payments')
-      this.props.updateCategory({id, category, type: 'payment'})
-    else if (type === 'Incoming')
-      this.props.updateCategory({id, category, type: 'income'})
+  onUpdateCategory = (id, category) => {
+    this.props.updateCategory({id, category})
   }
 
   render() {
