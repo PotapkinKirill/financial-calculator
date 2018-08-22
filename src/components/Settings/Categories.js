@@ -26,7 +26,7 @@ class Categories extends Component {
 
   handleClickDelete = category => () => {
     if (window.confirm("Are you sure you wish to delete category '" + category.name + "'?"))
-      this.props.deleteCategory({id: category.id})
+      this.props.deleteCategory(category.id)
   }
 
   handleClose = () => {

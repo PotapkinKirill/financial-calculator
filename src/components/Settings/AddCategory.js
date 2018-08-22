@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { CirclePicker, HuePicker } from 'react-color'
 
 class AddCategory extends Component {
   state = {
     category: null,
-    disabled: true
+    disabled: true,
+    displayColorPicker: false
   }
 
   handleClickAdd = () => {
@@ -26,7 +28,25 @@ class AddCategory extends Component {
     return this.props.categories.some(({name}) => name === category)
   }
 
+  openChooseColor = () => {
+    this.setState({
+      displayColorPicker: true
+    })
+  }
+
+  setColor = (color) => {
+    console.log(color)
+    this.setState({
+      color
+    })
+  }
+
   render() {
+    let colorPicker = <div>
+      <CirclePicker onChange={this.setColor}/>
+      <HuePicker onChange={this.setColor}/>
+    </div>
+
     return(
       <div className='AddCategory'>
         <div className='fade' onClick={this.props.onClose}/>
@@ -39,11 +59,15 @@ class AddCategory extends Component {
           <div className='form__body'>
             {this.state.isCategoryEmpty && <label className='empty'>Please, fill category</label>}
             {this.state.isCategoryExists && <label className='empty'>Category exists</label>}
-            <input
-              className={'input ' + (this.state.isCategoryEmpty || this.state.isCategoryExists ? 'input--incorrect' : '')}
-              defaultValue={this.state.category}
-              onChange={this.handleChange}
-            />
+            <div>
+              <div onClick={this.openChooseColor}>Pick color</div>
+              {this.state.displayColorPicker && colorPicker}
+              <input
+                className={'input ' + (this.state.isCategoryEmpty || this.state.isCategoryExists ? 'input--incorrect' : '')}
+                defaultValue={this.state.category}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
 
           <div className='form__footer'>

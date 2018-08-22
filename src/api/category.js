@@ -1,21 +1,21 @@
-import api from './api'
+import { apiNew } from './api'
 
-export const getCategories = () => {
-  return api('categories/all', 'GET')
+export const getCategories = (params) => {
+  return apiNew.get('categories/', params)
 }
 
-export const postCategoriesSum = (params) => {
-  return api('categories/all', 'POST', JSON.stringify(params))
+export const getCategoriesSum = (params) => {
+  return apiNew.get('categories/sum/', {params: params})
 }
 
 export const postAddCategory = (params) => {
-  return api('categories/add', 'POST', JSON.stringify(params))
+  return apiNew.post('categories/add/', params)
 }
 
-export const postUpdateCategory = (params) => {
-  return api('categories/update', 'POST', JSON.stringify(params))
+export const putUpdateCategory = (params) => {
+  return apiNew.put('categories/' + params.id, params)
 }
 
-export const postDeleteCategory = (params) => {
-  return api('categories/delete', 'POST', JSON.stringify(params))
+export const deleteDeleteCategory = (id) => {
+  return apiNew.delete('categories/' + id)
 }

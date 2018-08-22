@@ -1,7 +1,7 @@
-import { postLoadIncomes, postAddIncome, postUpdateIncome } from '../api/incomes'
+import { getLoadIncomes, postAddIncome, postUpdateIncome } from '../api/incomes'
 
 export const loadIncomes = (params) => dispatch => {
-  postLoadIncomes(params)
+  getLoadIncomes(params)
     .then(({incomes}) => {
       dispatch({ type: 'LOAD_INCOMES', payload: incomes})
     })

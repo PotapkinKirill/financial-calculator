@@ -1,7 +1,7 @@
-import { postLoadPayments, postAddPayment, postUpdatePayment } from '../api/payments'
+import { getLoadPayments, postAddPayment, postUpdatePayment } from '../api/payments'
 
-export const loadPayments = (params) => dispatch => {
-  postLoadPayments(params)
+export const loadPayments = () => dispatch => {
+  getLoadPayments()
     .then(({payments}) => {
       dispatch({ type: 'LOAD_PAYMENTS', payload: payments})
     })

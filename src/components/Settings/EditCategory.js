@@ -8,7 +8,7 @@ class EditCategory extends Component {
   }
 
   handleClickSave = () => {
-    this.props.updateCategory(this.props.category.id, this.state.category)
+    this.props.updateCategory({id: this.props.category.id, category: this.state.category})
   }
 
   handleChange = ({target}) => {
