@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PreviousPage from './PreviousPage'
+import shortName from '../../utils/shortName'
 
 class PaymentsPrevious extends Component {
   state = {
@@ -36,7 +37,9 @@ class PaymentsPrevious extends Component {
           <h3 className='previous__title'>Previous payments:</h3>
           {payments.map((payment) => 
               <div className='previous__list' key={payment.id}>
-                  <span><input type="radio" defaultChecked /></span>
+                  <span className='radio__wrapper'>
+                    <div className='radio' style={{backgroundColor: payment.color}}/>
+                  </span>
                   <span className="previous__list--category">{payment.category}:</span>
                   <span className="previous__list--price">${Math.round(payment.price * 100) / 100}</span>
               </div>

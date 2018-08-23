@@ -1,13 +1,13 @@
 import api from './api'
 
 export const getLoadIncomes = () => {
-  return api('incomes/', 'GET')
+  return api.get('incomes/')
 }
 
 export const postAddIncome = (params) => {
-  return api('incomes/', 'POST', JSON.stringify(params))
+  return api.post('incomes/', JSON.stringify(params))
 }
 
-export const postUpdateIncome = (params) => {
-  return api('incomes/' + params.id, 'POST', JSON.stringify(params))
+export const putUpdateIncome = (params) => {
+  return api.put('incomes/' + params.id, JSON.stringify(params))
 }

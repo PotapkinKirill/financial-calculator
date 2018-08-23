@@ -27,7 +27,7 @@ class PaymentsModal extends Component {
   }
 
   writePriceIfExists = () => {
-    return (this.state.category) 
+    return (this.state.category && this.state.category !== ' ')
       ? this.props.payments.map((payment) => {
           return (payment.category === this.state.category)
               ? this.setState({
@@ -84,27 +84,31 @@ class PaymentsModal extends Component {
   render(){
     let payments  = this.props.payments.slice().sort((a, b) => this.sort_by_date(a,b))
     return(
-      <div className="Payments">
-        {this.state.isCategoryEmpty && <label className='empty'>Please, fill category</label>}
-        <input
-          onChange={this.handleCategoryChange}
-          onBlur={this.writePriceIfExists}
-          className={'input input--category ' + (this.state.isCategoryEmpty ? 'input--incorrect' : '')}
-          placeholder={this.props.type + ' Category'}
-          list='PaymentsList'
-          value={this.state.category}
-        />
+      <div className='Payments'>
+        <div className='Payments__category'>
+          {this.state.isCategoryEmpty && <label className='incorrect'>Please, fill category</label>}
+          <input
+            onChange={this.handleCategoryChange}
+            onBlur={this.writePriceIfExists}
+            className={'input input--category ' + (this.state.isCategoryEmpty ? 'input--incorrect' : '')}
+            placeholder={this.props.type + ' Category'}
+            list='PaymentsList'
+            value={this.state.category}
+          />
+        </div>
         <PaymentsList categories={this.props.categories}/>
-        {this.state.isPriceEmpty && <label className='empty'>Please, fill price</label>}
-        <input
-          onChange={this.handlePriceChange}
-          onBlur={this.ifEmptyPrice}
-          className={'input input--price ' + (this.state.isPriceEmpty ? 'input--incorrect' : '')}
-          placeholder={this.props.type + ' Price'}
-          type='number'
-          step='0.01'
-          value={this.state.price}
-        />
+        <div className='Payments__price'>
+          {this.state.isPriceEmpty && <label className='incorrect'>Please, fill price</label>}
+          <input
+            onChange={this.handlePriceChange}
+            onBlur={this.ifEmptyPrice}
+            className={'input input--price ' + (this.state.isPriceEmpty ? 'input--incorrect' : '')}
+            placeholder={this.props.type + ' Price'}
+            type='number'
+            step='0.01'
+            value={this.state.price}
+          />
+        </div>
         <AddPayment
           setClear={this.setClear}
           payments={payments}

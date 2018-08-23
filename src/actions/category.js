@@ -1,3 +1,4 @@
+import consoleError from '../utils/consoleError'
 import {
   getCategories,
   getCategoriesSum,
@@ -19,10 +20,7 @@ export const loadCategoriesSum = (params) => dispatch => {
     .then(({data}) => {
       dispatch({ type: 'LOAD_CATEGORIES_SUM', payload: data.categories})
     })
-    .catch((error) => {
-      const response = error
-      console.log(response)
-    })
+    .catch((error) => consoleError(error))
 }
 
 export const addCategory = (params) => dispatch => {
@@ -47,8 +45,4 @@ export const deleteCategory = (id) => dispatch => {
       dispatch({ type: 'DELETE_CATEGORY', payload: id})
     })
     .catch(error => consoleError(error))
-}
-
-const consoleError = (error) => {
-  console.log('%cERROR:', 'font-weight: bold; color: white; background-color: red; padding: 5px', error)
 }

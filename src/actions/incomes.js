@@ -1,26 +1,27 @@
-import { getLoadIncomes, postAddIncome, postUpdateIncome } from '../api/incomes'
+import consoleError from '../utils/consoleError'
+import { getLoadIncomes, postAddIncome, putUpdateIncome } from '../api/incomes'
 
 export const loadIncomes = (params) => dispatch => {
   getLoadIncomes(params)
-    .then(({incomes}) => {
-      dispatch({ type: 'LOAD_INCOMES', payload: incomes})
+    .then(({data}) => {
+      dispatch({ type: 'LOAD_INCOMES', payload: data.incomes})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'loadIncomes', response)})
+    .catch(error => consoleError(error))
 }
 
 export const addIncome = (income) => dispatch => {
   postAddIncome(income)
-    .then(({income, category}) => {
-      dispatch({ type: 'ADD_INCOME', payload: income})
-      dispatch({ type: 'ADD_CATEGORY', payload: category})
+    .then(({data}) => {
+      dispatch({ type: 'ADD_INCOME', payload: data.income})
+      dispatch({ type: 'ADD_CATEGORY', payload: data.category})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'addIncome', response)})
+    .catch(error => consoleError(error))
 }
 
 export const updateIncome = (income) => dispatch => {
-  postUpdateIncome(income)
-  .then(({income}) => {
-    dispatch({ type: 'UPDATE_INCOME', payload: income})
+  putUpdateIncome(income)
+  .then(({data}) => {
+    dispatch({ type: 'UPDATE_INCOME', payload: data.income})
   })
-  .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'updateIncome', response)})
+  .catch(error => consoleError(error))
 }

@@ -15,11 +15,11 @@ class Settings extends Component {
     this.props.loadCategories()
   }
 
-  onAddCategory = (category, type) => {
+  onAddCategory = (category, type, color) => {
     if (type === 'Payments')
-      this.props.addCategory({category, type: 'payment'})
+      this.props.addCategory({category, type: 'payment', color})
     else if (type === 'Incoming')
-      this.props.addCategory({category, type: 'income'})
+      this.props.addCategory({category, type: 'income', color})
   }
 
   sort = (categories, type) => {

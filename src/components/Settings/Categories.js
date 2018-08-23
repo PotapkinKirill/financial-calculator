@@ -73,6 +73,7 @@ class Categories extends Component {
                   <button
                     className='edit'
                     onClick={this.handleClickEdit(category)}
+                    style={{fill: category.color}}
                     ><Pencil/>
                   </button>
                 </td>
