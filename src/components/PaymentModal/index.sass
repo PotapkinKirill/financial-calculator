@@ -50,6 +50,7 @@
   font-size: 16px
   text-align: center
   user-select: none
+  outline: 0
 .input
   margin-bottom: 30px
   &--price::-webkit-inner-spin-button,
@@ -59,7 +60,6 @@
     border-color: $light-blue
   &:focus
     border-color: $blue
-    outline: 0
   &--incorrect
     border-color: red
     &:hover,
@@ -69,7 +69,6 @@
   border-radius: 4px
   color: black
   cursor: pointer
-  outline: 0
   &:disabled
     cursor: not-allowed
   &_size_s
@@ -107,14 +106,17 @@
   display: flex
   width: 100%
   padding: 0
+  border-radius: 5px
 .input--category
+  
   height: 100%
-  border-radius: 4px
+  flex: 40
+  border: none
 .arrow
+  flex-basis: 40px
   display: flex
   justify-content: center
   align-items: center
-  height: 40px
   width: 40px
   cursor: pointer
   border-left: 2px solid lightgray
