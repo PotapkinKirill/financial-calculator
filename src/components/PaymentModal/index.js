@@ -1,7 +1,6 @@
 import './index.css'
 import React, { Component } from 'react';
 import Category from './Category'
-import CategorysList from './CategorysList';
 import Price from './Price'
 import AddPayment from './AddPayment';
 import Previous from './Previous';
@@ -46,8 +45,8 @@ class PaymentsModal extends Component {
           payments={this.props.payments}
           setCategory={this.setCategory}
           setPrice={this.setPrice}
+          categories={this.props.categories}
         />
-        <CategorysList categories={this.props.categories}/>
         <Price
           type={this.props.type}
           price={this.state.price}

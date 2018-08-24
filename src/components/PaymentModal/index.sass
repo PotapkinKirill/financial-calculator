@@ -4,6 +4,8 @@
   width: 80%
   margin: auto
   text-align: center
+  &__category
+    display: flex
   &__category,
   &__price
     position: relative
@@ -53,8 +55,12 @@
   outline: 0
 .input
   margin-bottom: 30px
+  &--price
+    padding-right: 25px
   &--price::-webkit-inner-spin-button,
   &--price::-webkit-outer-spin-button
+    position: relative
+    left: 15px
     opacity: 1
   &:hover
     border-color: $light-blue
@@ -102,26 +108,53 @@
       background-color: darkred
       color: white
 
+.CategoryList
+  position: absolute
+  width: 100%
+  top: 40px
+  background-color: white
+  z-index: 1
+  border: 2px solid gray
+  div
+    padding: 5px 0
+    cursor: pointer
+    border-bottom: 2px solid gray
+    &:hover
+      background-color: $light-blue
+    &:last-child
+      border-bottom: none
+
+
 .input--wrapper
   display: flex
   width: 100%
   padding: 0
-  border-radius: 5px
-.input--category
-  
-  height: 100%
-  flex: 40
-  border: none
-.arrow
-  flex-basis: 40px
-  display: flex
-  justify-content: center
-  align-items: center
-  width: 40px
-  cursor: pointer
-  border-left: 2px solid lightgray
-  &:hover
+  border-radius: 4px
+  .input--category
+    height: 100%
+    border: none
+    border-radius: 4px
+  .arrow
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 40px
+    cursor: pointer
+    border-left: 2px solid lightgray
+  &:hover .arrow
     border-left: 2px solid $light-blue
+  &:focus-within
+    border: 2px solid $blue
+    .arrow
+      border-left: 2px solid $blue
+.input--incorrect,
+.input--incorrect:hover
+  .arrow
+      border-left: 2px solid red
+  &:focus-within
+    .arrow
+      border-left: 2px solid $blue
+
 
 .radio
   height: 7px
