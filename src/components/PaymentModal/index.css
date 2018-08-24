@@ -23,16 +23,11 @@
     align-items: center;
     line-height: 2; }
     .previous__list--category {
-      width: 80%;
-      overflow: hidden; }
-      .previous__list--category:hover {
-        position: absolute;
-        width: 100%;
-        overflow: visible;
-        left: 17px;
-        background-color: #fff; }
+      width: 80%; }
     .previous__list--price {
       width: 15%; }
+  .previous--help {
+    cursor: help; }
   .previous__page {
     position: absolute;
     bottom: 0;
@@ -58,12 +53,6 @@
 
 .input {
   margin-bottom: 30px; }
-  .input--category {
-    border-radius: 4px; }
-    .input--category::-webkit-calendar-picker-indicator {
-      opacity: 1; }
-      .input--category::-webkit-calendar-picker-indicator:hover {
-        background-color: #a3cff1; }
   .input--price::-webkit-inner-spin-button, .input--price::-webkit-outer-spin-button {
     opacity: 1; }
   .input:hover {
@@ -113,6 +102,26 @@
     .button--cancel:active {
       background-color: darkred;
       color: white; }
+
+.input--wrapper {
+  display: flex;
+  width: 100%;
+  padding: 0; }
+
+.input--category {
+  height: 100%;
+  border-radius: 4px; }
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  border-left: 2px solid lightgray; }
+  .arrow:hover {
+    border-left: 2px solid #a3cff1; }
 
 .radio {
   height: 7px;

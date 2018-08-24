@@ -1,13 +1,13 @@
 import './index.css'
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import Categories from './Categories'
 import {
   loadCategories,
   addCategory,
   updateCategory,
   deleteCategory
 } from '../../actions/category'
-import Categories from './Categories'
 
 class Settings extends Component {
 

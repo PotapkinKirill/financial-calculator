@@ -26,15 +26,10 @@
     line-height: 2
     &--category
       width: 80%
-      overflow: hidden
-      &:hover
-        position: absolute
-        width: 100%
-        overflow: visible
-        left: 17px
-        background-color: #fff
     &--price
       width: 15%
+  &--help
+    cursor: help
   &__page
     position: absolute
     bottom: 0
@@ -57,12 +52,6 @@
   user-select: none
 .input
   margin-bottom: 30px
-  &--category
-    border-radius: 4px
-    &::-webkit-calendar-picker-indicator
-      opacity: 1
-      &:hover
-        background-color: $light-blue
   &--price::-webkit-inner-spin-button,
   &--price::-webkit-outer-spin-button
     opacity: 1
@@ -113,6 +102,24 @@
     &:active 
       background-color: darkred
       color: white
+
+.input--wrapper
+  display: flex
+  width: 100%
+  padding: 0
+.input--category
+  height: 100%
+  border-radius: 4px
+.arrow
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 40px
+  width: 40px
+  cursor: pointer
+  border-left: 2px solid lightgray
+  &:hover
+    border-left: 2px solid $light-blue
 
 .radio
   height: 7px

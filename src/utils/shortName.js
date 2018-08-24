@@ -1,6 +1,6 @@
 const shortName = name => {
-  if (name.length > 25)
-    return name.substr(0, 30) + '...'
+  if (name.length > 22)
+    return name.substr(0, 22) + '...'
   else
     return name
 }

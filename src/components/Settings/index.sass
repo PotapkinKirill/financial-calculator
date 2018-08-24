@@ -11,10 +11,27 @@
   width: 80%
   &:not(:last-child)
     margin-bottom: 50px
-  table
+  &Head
     width: 100%
-    tr 
-      line-height: 1.5
+    line-height: 1.5
+    &__title
+      display: inline-block
+      width: 60%
+      font-weight: bold
+    &__add
+      display: inline-block
+      width: 40%
+      text-align: right
+  &Body
+    width: 100%
+    line-height: 2
+    &__name
+      display: inline-block
+      width: 80%
+    &__buttons
+      display: inline-block
+      width: 20%
+      text-align: right
     td
       font-size: 18px
       vertical-align: middle
