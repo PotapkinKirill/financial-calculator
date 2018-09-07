@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/api/v1/'
+const baseUrl = 'https://financial-calculator-backend.herokuapp.com/api/v1/'
 
 export const api = axios.create({
   baseURL: baseUrl,
