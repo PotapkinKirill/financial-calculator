@@ -4,6 +4,16 @@
   width: 80%
   margin: auto
   text-align: center
+  &__category
+    display: flex
+  &__category,
+  &__price
+    position: relative
+  .incorrect
+    top: -20px
+    left: 0
+    right: 0
+    pointer-events: none
 .previous
   position: relative
   margin: auto
@@ -15,17 +25,28 @@
   &__list
     display: flex
     justify-content: space-between
+    align-items: center
     line-height: 2
     &--category
       width: 80%
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
     &--price
       width: 15%
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+  &--help
+    cursor: help
   &__page
     position: absolute
     bottom: 0
     width: 100%
     text-align: center
-.empty
+.incorrect
+  position: absolute
+  bottom: 0
   color: red
   text-align: center
 .input,
@@ -38,22 +59,20 @@
   font-size: 16px
   text-align: center
   user-select: none
+  outline: 0
 .input
   margin-bottom: 30px
-  &--category
-    border-radius: 4px
-    &::-webkit-calendar-picker-indicator
-      opacity: 1
-      &:hover
-        background-color: $light-blue
+  &--price
+    padding-right: 25px
   &--price::-webkit-inner-spin-button,
   &--price::-webkit-outer-spin-button
+    position: relative
+    left: 15px
     opacity: 1
   &:hover
     border-color: $light-blue
   &:focus
     border-color: $blue
-    outline: 0
   &--incorrect
     border-color: red
     &:hover,
@@ -63,7 +82,6 @@
   border-radius: 4px
   color: black
   cursor: pointer
-  outline: 0
   &:disabled
     cursor: not-allowed
   &_size_s
@@ -96,6 +114,69 @@
     &:active 
       background-color: darkred
       color: white
+
+.CategoryList
+  position: absolute
+  top: 40px
+  width: 100%
+  max-height: 200px
+  overflow-y: auto
+  background-color: white
+  z-index: 1
+  border-left: 1px solid lightgray
+  border-bottom: 1px solid lightgray
+  div
+    padding: 5px
+    cursor: pointer
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    &:hover
+      background-color: $light-blue
+
+.input--wrapper
+  display: flex
+  width: 100%
+  padding: 0
+  border-radius: 4px
+  .input--category
+    height: 100%
+    border: none
+    border-radius: 4px
+  .arrow
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 40px
+    cursor: pointer
+    border-left: 2px solid lightgray
+  &:hover .arrow
+    border-left: 2px solid $light-blue
+  &:focus-within
+    border: 2px solid $blue
+    .arrow
+      border-left: 2px solid $blue
+.input--incorrect,
+.input--incorrect:hover
+  .arrow
+      border-left: 2px solid red
+  &:focus-within
+    .arrow
+      border-left: 2px solid $blue
+
+
+.radio
+  height: 7px
+  width: 7px
+  border-radius: 7px
+  border: 0.4px solid white
+  &__wrapper
+    width: 13px
+    height: 13px
+    border: 1px solid black
+    border-radius: 13px
+    padding: 2px
+
 
 @media screen and (max-width: 1024px) 
   .button

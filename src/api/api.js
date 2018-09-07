@@ -1,15 +1,14 @@
-const baseUrl = process.env.REACT_APP_BASE_URL
+import axios from 'axios'
 
-const api = (path, REST, body = null) => {
-  return fetch(baseUrl + path, {
-    method: REST,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: body,
-    mode: 'cors'
-  }).then(response => response.json())
-}
+const baseUrl = 'https://financial-calculator-backend.herokuapp.com/api/v1/'
+
+export const api = axios.create({
+  baseURL: baseUrl,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+});
 
 export default (api)

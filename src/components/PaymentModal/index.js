@@ -1,73 +1,27 @@
 import './index.css'
-import React, { Component } from 'react';
-import AddPayment from './AddPayment';
-import PaymentsList from './PaymentsList';
-import PaymentsPrevious from './PaymentsPrevious';
+import React, { Component } from 'react'
+import Category from './Category'
+import Price from './Price'
+import AddPayment from './AddPayment'
+import Previous from './Previous'
+
 
 class PaymentsModal extends Component {
   state = {
     category: '',
     price: '',
-    isCategoryEmpty: false,
-    isPriceEmpty: false
+    isEmptyPrice: false
   }
 
-  handleCategoryChange = ({target}) => {
-    let category = target.value
-    target.style = ''
+  setPrice = (price) => {
     this.setState({
-      category,
-      isCategoryEmpty: false
+      price,
+      isEmptyPrice: false
     })
-    if (!category){
-      this.setState({
-        isCategoryEmpty: true
-      })
-    }
   }
 
-  writePriceIfExists = () => {
-    return (this.state.category) 
-      ? this.props.payments.map((payment) => {
-          return (payment.category === this.state.category)
-              ? this.setState({
-                  price: payment.price,
-                  isPriceEmpty: false
-                })
-              : null
-        })
-      : this.setState({
-          isCategoryEmpty: true,
-        })
-  }
-
-  handlePriceChange = ({target}) => {
-    let price = Number(target.value)
-    target.style = ''
-    this.setState({
-      isPriceEmpty: false
-    })
-    if (price && price > 0) {
-      this.setState({
-        price
-      })
-    } else {
-      this.setState({
-        price: '',
-        isPriceEmpty: true
-      })
-    }
-  }
-
-  ifEmptyPrice = () => {
-    if (!this.state.price)
-      this.setState({
-        isPriceEmpty: true
-      })
-  }
-
-  setFocus = ({target}) => {
-    target.style = ''
+  setCategory = (category) => {
+    this.setState({category})
   }
 
   setClear = () => {
@@ -82,28 +36,22 @@ class PaymentsModal extends Component {
   }
 
   render(){
-    let payments  = this.props.payments.slice().sort((a, b) => this.sort_by_date(a,b))
+    let payments = this.props.payments.slice().sort((a, b) => this.sort_by_date(a,b))
     return(
-      <div className="Payments">
-        {this.state.isCategoryEmpty && <label className='empty'>Please, fill category</label>}
-        <input
-          onChange={this.handleCategoryChange}
-          onBlur={this.writePriceIfExists}
-          className={'input input--category ' + (this.state.isCategoryEmpty ? 'input--incorrect' : '')}
-          placeholder={this.props.type + ' Category'}
-          list='PaymentsList'
-          value={this.state.category}
+      <div className='Payments'>
+        <Category
+          type={this.props.type}
+          category={this.state.category}
+          payments={this.props.payments}
+          setCategory={this.setCategory}
+          setPrice={this.setPrice}
+          categories={this.props.categories}
         />
-        <PaymentsList categories={this.props.categories}/>
-        {this.state.isPriceEmpty && <label className='empty'>Please, fill price</label>}
-        <input
-          onChange={this.handlePriceChange}
-          onBlur={this.ifEmptyPrice}
-          className={'input input--price ' + (this.state.isPriceEmpty ? 'input--incorrect' : '')}
-          placeholder={this.props.type + ' Price'}
-          type='number'
-          step='0.01'
-          value={this.state.price}
+        <Price
+          type={this.props.type}
+          price={this.state.price}
+          isEmptyPrice={this.state.isEmptyPrice}
+          setPrice={this.setPrice}
         />
         <AddPayment
           setClear={this.setClear}
@@ -112,7 +60,7 @@ class PaymentsModal extends Component {
           addPayment={this.props.addPayment}
           updatePayment={this.props.updatePayment}
         />
-        <PaymentsPrevious payments={payments} categories={this.props.categories}/>
+        <Previous payments={payments} categories={this.props.categories}/>
       </div>
     );
   }

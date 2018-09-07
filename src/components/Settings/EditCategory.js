@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { CirclePicker, HuePicker } from 'react-color'
+import ColorHash from 'color-hash'
+
+const colorHash = new ColorHash()
 
 class EditCategory extends Component {
   state = {
     category: this.props.category.name,
-    disabled: true
+    disabled: true,
+    color: this.props.category.color || colorHash.hex(this.props.category.color)
   }
 
   handleClickSave = () => {
-    this.props.updateCategory(this.props.category.id, this.state.category)
+    this.props.updateCategory({id: this.props.category.id, category: this.state.category, color: this.state.color})
+    this.props.onClose()
   }
 
   handleChange = ({target}) => {
     let isCategoryExists = this.ifExists(target.value)
     let isCategoryEmpty = target.value === ''
     let isSameName = target.value === this.props.category.name
+    let incorrect = isCategoryExists || isCategoryEmpty || isSameName
+    let color
+    if (this.state.isColorChanged)
+      color = this.state.color
+    else
+      color = colorHash.hex(target.value)
     this.setState({
       category: target.value,
-      disabled: isCategoryExists || isCategoryEmpty || isSameName,
+      disabled: incorrect,
+      incorrect,
       isCategoryExists,
       isCategoryEmpty,
-      isSameName
+      isSameName,
+      color
     })
   }
 
@@ -30,8 +44,27 @@ class EditCategory extends Component {
     })
   }
   
+  toggleChooseColor = () => {
+    this.setState({
+      displayColorPicker: !this.state.displayColorPicker
+    })
+  }
+
+  setColor = (color) => {
+    this.setState({
+      color: color.hex,
+      isColorChanged: true,
+      disabled: false
+    })
+  }
+
   render(){
-    let { isCategoryEmpty, isCategoryExists, isSameName } = this.state
+    let colorPicker = <div className='ColorPicker' style={{borderColor: this.state.color}}>
+                        <div className='fade fade--transparent' onClick={this.toggleChooseColor}/>
+                        <CirclePicker color={this.state.color} onChangeComplete={this.setColor}/>
+                        <HuePicker color={this.state.color} onChange={this.setColor}/>
+                      </div>
+    let { isCategoryEmpty, isCategoryExists, isSameName, incorrect } = this.state
     return(
       <div className='EditCategory'>
         <div className='fade' onClick={this.props.onClose}/>
@@ -42,14 +75,21 @@ class EditCategory extends Component {
           </div>
 
           <div className='form__body'>
-            {isCategoryEmpty && <label className='empty'>Please, fill category</label>}
-            {isCategoryExists && <label className='empty'>Category exists</label>}
-            {isSameName && <label className='empty'>This is same name</label>}
-            <input
-              className={'input ' + (isCategoryEmpty || isCategoryExists || isSameName ? 'input--incorrect' : '')}
-              defaultValue={this.state.category}
-              onChange={this.handleChange}
-            />
+            {isCategoryEmpty && <label className='incorrect'>Please, fill category</label>}
+            {isCategoryExists && <label className='incorrect'>Category exists</label>}
+            {isSameName && <label className='incorrect'>This is same name</label>}
+            <div className='choose__wrapper'>
+              <span className='choose' onClick={this.toggleChooseColor}>
+                <div className='choose__color'style={{backgroundColor: this.state.color}}>
+                </div>
+              </span>
+              {this.state.displayColorPicker && colorPicker}
+              <input
+                className={'input ' + (incorrect ? 'input--incorrect' : '')}
+                defaultValue={this.state.category}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
 
           <div className='form__footer'>

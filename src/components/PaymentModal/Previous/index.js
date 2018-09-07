@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import PreviousPage from './PreviousPage'
+import Page from './Page'
+import Name from './Name'
 
-class PaymentsPrevious extends Component {
+class Previous extends Component {
   state = {
     page: 0
   }
@@ -25,7 +26,7 @@ class PaymentsPrevious extends Component {
       let pages = Math.ceil(this.props.payments.length / 5)
       let { page } = this.state
       payments = this.props.payments.slice(0 + page * 5, 5 + page * 5)
-      paging = <PreviousPage
+      paging = <Page
                 page={page} pages={pages}
                 handleClickPrev={this.handleClickPrev}
                 handleClickNext={this.handleClickNext}
@@ -34,11 +35,18 @@ class PaymentsPrevious extends Component {
     return (payments.length !== 0)
     && <div className="previous">
           <h3 className='previous__title'>Previous payments:</h3>
-          {payments.map((payment) => 
+          {payments.map((payment) =>
               <div className='previous__list' key={payment.id}>
-                  <span><input type="radio" defaultChecked /></span>
-                  <span className="previous__list--category">{payment.category}:</span>
-                  <span className="previous__list--price">${Math.round(payment.price * 100) / 100}</span>
+                  <span className='radio__wrapper'>
+                    <div className='radio' style={{backgroundColor: payment.color}}/>
+                  </span>
+                  <Name name={payment.category}/>
+                  <span 
+                    className="previous__list--price"
+                    title={Math.round(payment.price * 100) / 100}
+                    >
+                    ${Math.round(payment.price * 100) / 100}
+                  </span>
               </div>
           )}
           {paging}
@@ -46,4 +54,4 @@ class PaymentsPrevious extends Component {
   }
 }
 
-export default (PaymentsPrevious)
+export default (Previous)

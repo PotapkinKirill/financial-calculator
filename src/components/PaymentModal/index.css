@@ -2,6 +2,15 @@
   width: 80%;
   margin: auto;
   text-align: center; }
+  .Payments__category {
+    display: flex; }
+  .Payments__category, .Payments__price {
+    position: relative; }
+  .Payments .incorrect {
+    top: -20px;
+    left: 0;
+    right: 0;
+    pointer-events: none; }
 
 .previous {
   position: relative;
@@ -14,18 +23,29 @@
   .previous__list {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     line-height: 2; }
     .previous__list--category {
-      width: 80%; }
+      width: 80%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
     .previous__list--price {
-      width: 15%; }
+      width: 15%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+  .previous--help {
+    cursor: help; }
   .previous__page {
     position: absolute;
     bottom: 0;
     width: 100%;
     text-align: center; }
 
-.empty {
+.incorrect {
+  position: absolute;
+  bottom: 0;
   color: red;
   text-align: center; }
 
@@ -38,23 +58,21 @@
   background-color: white;
   font-size: 16px;
   text-align: center;
-  user-select: none; }
+  user-select: none;
+  outline: 0; }
 
 .input {
   margin-bottom: 30px; }
-  .input--category {
-    border-radius: 4px; }
-    .input--category::-webkit-calendar-picker-indicator {
-      opacity: 1; }
-      .input--category::-webkit-calendar-picker-indicator:hover {
-        background-color: #a3cff1; }
+  .input--price {
+    padding-right: 25px; }
   .input--price::-webkit-inner-spin-button, .input--price::-webkit-outer-spin-button {
+    position: relative;
+    left: 15px;
     opacity: 1; }
   .input:hover {
     border-color: #a3cff1; }
   .input:focus {
-    border-color: #66afe9;
-    outline: 0; }
+    border-color: #66afe9; }
   .input--incorrect {
     border-color: red; }
     .input--incorrect:hover, .input--incorrect:focus {
@@ -63,8 +81,7 @@
 .button {
   border-radius: 4px;
   color: black;
-  cursor: pointer;
-  outline: 0; }
+  cursor: pointer; }
   .button:disabled {
     cursor: not-allowed; }
   .button_size_s {
@@ -97,6 +114,68 @@
     .button--cancel:active {
       background-color: darkred;
       color: white; }
+
+.CategoryList {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  z-index: 1;
+  border-left: 1px solid lightgray;
+  border-bottom: 1px solid lightgray; }
+  .CategoryList div {
+    padding: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    .CategoryList div:hover {
+      background-color: #a3cff1; }
+
+.input--wrapper {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  border-radius: 4px; }
+  .input--wrapper .input--category {
+    height: 100%;
+    border: none;
+    border-radius: 4px; }
+  .input--wrapper .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    cursor: pointer;
+    border-left: 2px solid lightgray; }
+  .input--wrapper:hover .arrow {
+    border-left: 2px solid #a3cff1; }
+  .input--wrapper:focus-within {
+    border: 2px solid #66afe9; }
+    .input--wrapper:focus-within .arrow {
+      border-left: 2px solid #66afe9; }
+
+.input--incorrect .arrow,
+.input--incorrect:hover .arrow {
+  border-left: 2px solid red; }
+
+.input--incorrect:focus-within .arrow,
+.input--incorrect:hover:focus-within .arrow {
+  border-left: 2px solid #66afe9; }
+
+.radio {
+  height: 7px;
+  width: 7px;
+  border-radius: 7px;
+  border: 0.4px solid white; }
+  .radio__wrapper {
+    width: 13px;
+    height: 13px;
+    border: 1px solid black;
+    border-radius: 13px;
+    padding: 2px; }
 
 @media screen and (max-width: 1024px) {
   .button:disabled {

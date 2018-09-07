@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Pencil from './Pencil'
-import Trash from './Trash'
+import Head from './Categories/Head'
+import Body from './Categories/Body'
 import AddCategory from './AddCategory'
 import EditCategory from './EditCategory'
 
@@ -11,25 +11,25 @@ class Categories extends Component {
     category: null
   }
 
-  handleClickAdd = () => {
+  onClickAdd = () => {
     this.setState({
       add: true
     })
   }
 
-  handleClickEdit = category => () => {
+  onClickEdit = category => () => {
     this.setState({
       edit: true,
-      category: category
+      category
     })
   }
 
-  handleClickDelete = category => () => {
-    if (window.confirm("Are you sure you wish to delete category '" + category.name + "'?"))
-      this.props.deleteCategory({id: category.id})
+  onClickDelete = category => () => {
+    if (window.confirm(`Are you sure to delete category '${category.name}'?`))
+      this.props.deleteCategory(category.id)
   }
 
-  handleClose = () => {
+  onClose = () => {
     this.setState({
       add: false,
       edit: false,
@@ -38,56 +38,30 @@ class Categories extends Component {
   }
 
   render(){
-    let form = null
-    if (this.state.add)
-      form = <AddCategory
-                onClose={this.handleClose}
+    return(
+      <div className='Category'>
+        <Head type={this.props.type} onClickAdd={this.onClickAdd} />
+        <Body
+          categories={this.props.categories}
+          onClickEdit={this.onClickEdit}
+          onClickDelete={this.onClickDelete}
+        />
+        {
+          this.state.add
+          && <AddCategory
+                onClose={this.onClose}
                 addCategory={this.props.addCategory}
                 type={this.props.type}
               />
-    if (this.state.edit)
-      form = <EditCategory
-                onClose={this.handleClose}
-                updateCategory={this.props.updateCategory}
-                category={this.state.category}
-              />
-    return(
-      <div className='Category'>
-        <table>
-          <thead>
-            <tr>
-              <td><h4>{this.props.type} categories</h4></td>
-              <td>Add new</td>
-              <td>
-                <div className='Category__add' onClick={this.handleClickAdd}>
-                  <div className='Category__add-button'></div>
-                </div>
-              </td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.categories.map(category => 
-              <tr key={category.id}>
-                <td className='category__name'>- {category.name}</td>
-                <td>
-                  <button
-                    className='edit'
-                    onClick={this.handleClickEdit(category)}
-                    ><Pencil/>
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className='delete'
-                    onClick={this.handleClickDelete(category)}
-                    ><Trash/>
-                  </button>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-        {form}
+        }
+        {
+          this.state.edit
+          && <EditCategory
+              onClose={this.onClose}
+              updateCategory={this.props.updateCategory}
+              category={this.state.category}
+            />
+        }
       </div>
     )
   }

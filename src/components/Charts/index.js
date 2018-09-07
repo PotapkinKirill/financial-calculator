@@ -25,7 +25,7 @@ class Charts extends Component {
   }
 
   sort = (categories, type) => {
-    return categories.filter(category => category.type_of_pay === type)
+    return categories.filter(category => category.type_of_pay === type && category.sum)
                      .sort((a, b) => b.sum - a.sum)
   }
 

@@ -1,26 +1,27 @@
-import { postLoadPayments, postAddPayment, postUpdatePayment } from '../api/payments'
+import consoleError from '../utils/consoleError'
+import { getLoadPayments, postAddPayment, putUpdatePayment } from '../api/payments'
 
-export const loadPayments = (params) => dispatch => {
-  postLoadPayments(params)
-    .then(({payments}) => {
-      dispatch({ type: 'LOAD_PAYMENTS', payload: payments})
+export const loadPayments = () => dispatch => {
+  getLoadPayments()
+    .then(({data}) => {
+      dispatch({ type: 'LOAD_PAYMENTS', payload: data.payments})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'loadPayments', response)})
+    .catch(error => consoleError(error))
 }
 
 export const addPayment = (payment) => dispatch => {
   postAddPayment(payment)
-    .then(({payment, category}) => {
-      dispatch({ type: 'ADD_PAYMENT', payload: payment})
-      dispatch({ type: 'ADD_CATEGORY', payload: category})
+    .then(({data}) => {
+      dispatch({ type: 'ADD_PAYMENT', payload: data.payment})
+      dispatch({ type: 'ADD_CATEGORY', payload: data.category})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'addPayment', response)})
+    .catch(error => consoleError(error))
 }
 
 export const updatePayment = (payment) => dispatch => {
-  postUpdatePayment(payment)
-  .then(({payment}) => {
-    dispatch({ type: 'UPDATE_PAYMENT', payload: payment})
+  putUpdatePayment(payment)
+  .then(({data}) => {
+    dispatch({ type: 'UPDATE_PAYMENT', payload: data.payment})
   })
-  .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'updatePayment', response)})
+  .catch(error => consoleError(error))
 }

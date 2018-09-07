@@ -1,13 +1,13 @@
 import './index.css'
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import Categories from './Categories'
 import {
   loadCategories,
   addCategory,
   updateCategory,
   deleteCategory
 } from '../../actions/category'
-import Categories from './Categories'
 
 class Settings extends Component {
 
@@ -15,20 +15,21 @@ class Settings extends Component {
     this.props.loadCategories()
   }
 
-  onAddCategory = (category, type) => {
+  onAddCategory = (category, type, color) => {
     if (type === 'Payments')
-      this.props.addCategory({category, type: 'payment'})
+      this.props.addCategory({category, type: 'payment', color})
     else if (type === 'Incoming')
-      this.props.addCategory({category, type: 'income'})
+      this.props.addCategory({category, type: 'income', color})
   }
 
-  onUpdateCategory = (id, category) => {
-    this.props.updateCategory({id, category})
+  sort = (categories, type) => {
+    return categories.filter(category => category.type_of_pay === type)
+      .sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
   }
 
   render() {
-    let categories_payment = this.props.categories.filter(category => category.type_of_pay === 'payment')
-    let categories_income = this.props.categories.filter(category => category.type_of_pay === 'income')
+    let categories_payment = this.sort(this.props.categories, 'payment')
+    let categories_income = this.sort(this.props.categories, 'income')
     return(
       <div className='Settings'>
         <Categories
@@ -36,14 +37,14 @@ class Settings extends Component {
           categories={categories_payment}
           addCategory={this.onAddCategory}
           deleteCategory={this.props.deleteCategory}
-          updateCategory={this.onUpdateCategory}
+          updateCategory={this.props.updateCategory}
         />
         <Categories
           type='Incoming'
           categories={categories_income}
           addCategory={this.onAddCategory}
           deleteCategory={this.props.deleteCategory}
-          updateCategory={this.onUpdateCategory}
+          updateCategory={this.props.updateCategory}
         />
       </div>
     );

@@ -20,7 +20,7 @@ const withoutOther = (action) => {
 }
 
 const deleteCategory = (state, action) => {
-  return (state.filter(elem => elem.id !== action.payload.id))
+  return (state.filter(elem => elem.id !== action.payload))
 }
 
 const updateCategory = (state, action) => {

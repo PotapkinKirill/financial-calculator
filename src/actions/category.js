@@ -1,47 +1,48 @@
+import consoleError from '../utils/consoleError'
 import {
   getCategories,
-  postCategoriesSum,
+  getCategoriesSum,
   postAddCategory,
-  postUpdateCategory,
-  postDeleteCategory
+  putUpdateCategory,
+  deleteDeleteCategory
 } from '../api/category'
 
 export const loadCategories = () => dispatch => {
   getCategories()
-    .then(({categories}) => {
-      dispatch({ type: 'LOAD_CATEGORIES', payload: categories})
+    .then(({data}) => {
+      dispatch({ type: 'LOAD_CATEGORIES', payload: data.categories})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'loadCategories', response)})
+    .catch(error => consoleError(error))
 }
 
 export const loadCategoriesSum = (params) => dispatch => {
-  postCategoriesSum(params)
-    .then(({categories}) => {
-      dispatch({ type: 'LOAD_CATEGORIES_SUM', payload: categories})
+  getCategoriesSum(params)
+    .then(({data}) => {
+      dispatch({ type: 'LOAD_CATEGORIES_SUM', payload: data.categories})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'loadCategoriesSum', response)})
+    .catch((error) => consoleError(error))
 }
 
 export const addCategory = (params) => dispatch => {
   postAddCategory(params)
-    .then(({category}) => {
-      dispatch({ type: 'ADD_CATEGORY', payload: category})
+    .then(({data}) => {
+      dispatch({ type: 'ADD_CATEGORY', payload: data.category})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'addCategory', response)})
+    .catch(error => consoleError(error))
 }
 
 export const updateCategory = (params) => dispatch => {
-  postUpdateCategory(params)
-    .then(({category}) => {
-      dispatch({ type: 'UPDATE_CATEGORY', payload: category})
+  putUpdateCategory(params)
+    .then(({data}) => {
+      dispatch({ type: 'UPDATE_CATEGORY', payload: data.category})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'updateCategory', response)})
+    .catch(error => {const response = error.response; consoleError(response)})
 }
 
-export const deleteCategory = (params) => dispatch => {
-  postDeleteCategory(params)
+export const deleteCategory = (id) => dispatch => {
+  deleteDeleteCategory(id)
     .then(() => {
-      dispatch({ type: 'DELETE_CATEGORY', payload: params})
+      dispatch({ type: 'DELETE_CATEGORY', payload: id})
     })
-    .catch((response) => { console.log('%cERROR:','background-color: red; padding: 5px', 'deleteCategory', response)})
+    .catch(error => consoleError(error))
 }
