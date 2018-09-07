@@ -23,6 +23,8 @@
   .CategoryBody {
     width: 100%;
     line-height: 2; }
+    .CategoryBody div {
+      display: flex; }
     .CategoryBody__name {
       display: inline-block;
       width: 80%; }
@@ -30,15 +32,6 @@
       display: inline-block;
       width: 20%;
       text-align: right; }
-    .CategoryBody td {
-      font-size: 18px;
-      vertical-align: middle; }
-      .CategoryBody td:nth-of-type(1) {
-        text-align: left;
-        width: 60%; }
-      .CategoryBody td:nth-of-type(2) {
-        text-align: right;
-        width: 35%; }
   .Category__add {
     display: inline-block;
     width: 20px;

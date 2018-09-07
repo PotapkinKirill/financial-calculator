@@ -12,6 +12,8 @@ class Price extends Component {
       isEmptyPrice: false,
       isLessPrice: false
     })
+    if (!price)
+      this.ifEmptyPrice()
     if (price > 0)
       this.props.setPrice(price)
     else {
@@ -38,7 +40,6 @@ class Price extends Component {
         {isLessPrice && <label className='incorrect'>{'The price can\'t be less than 0.01'}</label>}
         <input
           onChange={this.onChangePrice}
-          onBlur={this.ifEmptyPrice}
           className={'input input--price ' + (isEmptyPrice || isLessPrice ? 'input--incorrect' : '')}
           placeholder={this.props.type + ' Price'}
           type='number'

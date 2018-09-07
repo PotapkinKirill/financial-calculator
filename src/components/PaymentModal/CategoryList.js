@@ -5,7 +5,7 @@ const CategoryList = ({categories, setCategory}) => {
     <ul className='CategoryList'>
     {categories.map((category, index) =>
          <div key={index} onClick={setCategory.bind({}, category.name)}>
-          <span>{category.name}</span>
+          <span title={category.name}>{category.name}</span>
          </div>
     )}
     </ul>

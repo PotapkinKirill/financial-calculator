@@ -8,6 +8,7 @@ import App from './components/App'
 import rootReducers from './reducers'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
+import $ from "jquery";
 
 
 //const persistedState = loadState();
@@ -24,7 +25,12 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
+  function () {
+    $('*[title]').on('click', () => {
+      console.log('test', this)
+    })
+  }
 );
 
 registerServiceWorker();

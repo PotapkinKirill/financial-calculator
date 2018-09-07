@@ -12,26 +12,29 @@ class Category extends Component {
     this.onToggleShowList()
     let category = target.value
     this.props.setCategory(category)
+    this.writePriceIfExists(category)
     this.setState({isEmptyCategory: false, isShowList: true})
-    if (!category){
-      this.setState({isEmptyCategory: true})
-    }
   }
 
-  writePriceIfExists = () => {
-    let { category, payments } = this.props
-    return (category)
-      ? payments.map((payment) => {
-        return (payment.category === category)
-          ? this.props.setPrice(payment.price)
-          : null
+  writePriceIfExists = category => {
+    let { payments } = this.props
+    if (category) {
+      let existingPayment = payments.find(payment => {
+        return payment.category === category
       })
-      : this.setState({isEmptyCategory: true})
+      return (existingPayment)
+        ? this.props.setPrice(existingPayment.price)
+        : this.props.setPrice('')
+    }
+    else
+      this.setState({isEmptyCategory: true})
   }
 
   setCategory = (category) => {
+    this.props.setCategory(category)
+    this.writePriceIfExists(category)
     this.setState({
-      category,
+      isEmptyCategory: false,
       isShowList: false
     })
   }
@@ -46,6 +49,8 @@ class Category extends Component {
     return categories.map(category => {
       if (category.name.match(this.props.category))
         return category
+      else 
+        return undefined
     }).filter(category => category !== undefined)
   }
 
@@ -58,17 +63,15 @@ class Category extends Component {
         <div className={'input input--wrapper ' + (isEmptyCategory ? 'input--incorrect' : '')}>
           <input
             onChange={this.onChangeCategory}
-            onBlur={this.writePriceIfExists}
-            onFocus={this.onToggleShowList}
             className='input input--category'
             placeholder={this.props.type + ' Category'}
-            defaultValue={this.state.category}
+            value={this.props.category}
           />
-          <span className='arrow' onClick={this.onToggleShowList}>&#11167;</span>
+          <span className='arrow' onClick={this.onToggleShowList}>⯆</span>
         </div>
-        { 
+        {
           this.state.isShowList &&
-          <List 
+          <List
             categories={categories}
             setCategory={this.setCategory}
           />

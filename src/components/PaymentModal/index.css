@@ -7,9 +7,10 @@
   .Payments__category, .Payments__price {
     position: relative; }
   .Payments .incorrect {
-    bottom: 10px;
+    top: -20px;
     left: 0;
-    right: 0; }
+    right: 0;
+    pointer-events: none; }
 
 .previous {
   position: relative;
@@ -25,9 +26,15 @@
     align-items: center;
     line-height: 2; }
     .previous__list--category {
-      width: 80%; }
+      width: 80%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
     .previous__list--price {
-      width: 15%; }
+      width: 15%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
   .previous--help {
     cursor: help; }
   .previous__page {
@@ -114,15 +121,18 @@
   top: 40px;
   background-color: white;
   z-index: 1;
-  border: 2px solid gray; }
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray; }
   .CategoryList div {
-    padding: 5px 0;
+    padding: 5px;
     cursor: pointer;
-    border-bottom: 2px solid gray; }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    .CategoryList div:last-child {
+      border-bottom: 1px solid lightgray; }
     .CategoryList div:hover {
       background-color: #a3cff1; }
-    .CategoryList div:last-child {
-      border-bottom: none; }
 
 .input--wrapper {
   display: flex;
@@ -154,33 +164,6 @@
 .input--incorrect:focus-within .arrow,
 .input--incorrect:hover:focus-within .arrow {
   border-left: 2px solid #66afe9; }
-
-.radio {
-  height: 7px;
-  width: 7px;
-  border-radius: 7px;
-  border: 0.4px solid white; }
-  .radio__wrapper {
-    width: 13px;
-    height: 13px;
-    border: 1px solid black;
-    border-radius: 13px;
-    padding: 2px; }
-
-@media screen and (max-width: 1024px) {
-  .button:disabled {
-    background-color: #e5e5e5; } }
-t--wrapper:focus-within .arrow {
-      border-left: 2px solid #66afe9; }
-
-.input--incorrect .arrow,
-.input--incorrect:hover .arrow {
-  border-left: 2px solid red; }
-
-.input--incorrect:focus-within .arrow,
-.input--incorrect:hover:focus-within .arrow {
-  border-left: 2px solid #66afe9; }
->>>>>>> Stashed changes
 
 .radio {
   height: 7px;

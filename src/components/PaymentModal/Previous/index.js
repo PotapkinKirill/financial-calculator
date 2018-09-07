@@ -41,7 +41,10 @@ class Previous extends Component {
                     <div className='radio' style={{backgroundColor: payment.color}}/>
                   </span>
                   <Name name={payment.category}/>
-                  <span className="previous__list--price">
+                  <span 
+                    className="previous__list--price"
+                    title={Math.round(payment.price * 100) / 100}
+                    >
                     ${Math.round(payment.price * 100) / 100}
                   </span>
               </div>

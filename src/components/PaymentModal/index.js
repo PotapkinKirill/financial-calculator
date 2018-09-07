@@ -1,9 +1,9 @@
 import './index.css'
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Category from './Category'
 import Price from './Price'
-import AddPayment from './AddPayment';
-import Previous from './Previous';
+import AddPayment from './AddPayment'
+import Previous from './Previous'
 
 
 class PaymentsModal extends Component {

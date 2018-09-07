@@ -10,9 +10,10 @@
   &__price
     position: relative
   .incorrect
-    bottom: 10px
+    top: -20px
     left: 0
     right: 0
+    pointer-events: none
 .previous
   position: relative
   margin: auto
@@ -28,8 +29,14 @@
     line-height: 2
     &--category
       width: 80%
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
     &--price
       width: 15%
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
   &--help
     cursor: help
   &__page
@@ -114,16 +121,18 @@
   top: 40px
   background-color: white
   z-index: 1
-  border: 2px solid gray
+  border-left: 1px solid lightgray
+  border-right: 1px solid lightgray
   div
-    padding: 5px 0
+    padding: 5px
     cursor: pointer
-    border-bottom: 2px solid gray
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    &:last-child
+      border-bottom: 1px solid lightgray
     &:hover
       background-color: $light-blue
-    &:last-child
-      border-bottom: none
-
 
 .input--wrapper
   display: flex
