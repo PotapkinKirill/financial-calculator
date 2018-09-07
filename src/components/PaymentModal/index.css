@@ -117,20 +117,20 @@
 
 .CategoryList {
   position: absolute;
-  width: 100%;
   top: 40px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
   background-color: white;
   z-index: 1;
   border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray; }
+  border-bottom: 1px solid lightgray; }
   .CategoryList div {
     padding: 5px;
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; }
-    .CategoryList div:last-child {
-      border-bottom: 1px solid lightgray; }
     .CategoryList div:hover {
       background-color: #a3cff1; }
 
